@@ -88,6 +88,13 @@ install.packages("here")   # once, on the machine
 library(here)              # every session, at the top of the script
 ```
 
+While you are at it, install `ggplot2` too — you will need it in lab 2 and a package
+download in the middle of an exercise wastes everyone's time:
+
+```r
+install.packages("ggplot2")
+```
+
 Replace your relative path with a call to `here()`:
 
 ```r

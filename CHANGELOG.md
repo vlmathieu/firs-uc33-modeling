@@ -14,6 +14,15 @@ If you downloaded material before one of the dates below, check what has changed
   14:35, lab 3 at 15:35. The session now opens with a presentation of this repository
   and of the issue channel. Lab 2 straddles the break: steps 1 to 5 before, 6 and 7
   after.
+- Lab 2 now names the script it asks for (`src/02_cleaning.R` / `.py`), says where the
+  console is in RStudio and VS Code, and gives the R and Python function for every step
+  from 4 to 7 instead of describing them. The challenges carry runnable code too, each
+  snippet labelled R or Python.
+- Lab 2, step 7 asks for a stacked bar chart and recommends `ggplot2` in R, with the
+  aggregation written out and a link to the one-page cheatsheet. The published R
+  solution uses `ggplot2` as well, for consistency.
+- Lab 1, step 5 installs `ggplot2` alongside `here`, so that lab 2 does not stall on a
+  package download.
 
 ### Added
 
