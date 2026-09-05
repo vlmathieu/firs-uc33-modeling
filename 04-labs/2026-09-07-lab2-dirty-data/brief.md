@@ -31,6 +31,17 @@ Download `comtrade_fr_roundwood_dirty.csv` into `data/raw/`.
 head -3 data/raw/comtrade_fr_roundwood_dirty.csv
 ```
 
+On **Windows PowerShell** — the default terminal in VS Code on Windows — `head` does not
+exist. Use:
+
+```powershell
+Get-Content -Head 3 data\raw\comtrade_fr_roundwood_dirty.csv
+```
+
+Worth noticing in passing: the terminal is not one thing, and its commands are not
+universal. That is one more difference between your machines that your work has to
+survive.
+
 Answer these four questions before writing a single line of code:
 
 - what is the column separator?

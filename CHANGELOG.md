@@ -26,3 +26,5 @@ If you downloaded material before one of the dates below, check what has changed
   degraded version (`05-data/`).
 - Briefs and challenges for the three labs of 7 September, and the five broken scripts
   of lab 3 (`04-labs/`).
+- PowerShell equivalent of `head -3` in lab 2, step 1 (`Get-Content -Head 3`), for
+  Windows users.
