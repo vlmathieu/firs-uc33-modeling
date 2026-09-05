@@ -8,6 +8,9 @@ abstract: >-
   des modèles forestiers.
 type: software
 authors:
+  - family-names: Lobianco
+    given-names: Antonello
+    affiliation: "AgroParisTech, UMR BETA"
   - family-names: Mathieu
     given-names: Valentin
     affiliation: "AgroParisTech, UMR Silva"
