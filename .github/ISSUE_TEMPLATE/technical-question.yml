@@ -1,21 +1,21 @@
-name: Question technique
-description: Un blocage sur une installation, un script, une erreur. Remplir ce formulaire, c'est déjà construire un exemple reproductible.
+name: Technical question
+description: Stuck on an installation, a script, an error. Filling this form in is already building a reproducible example.
 title: "[Question] "
 labels: ["question"]
 body:
   - type: markdown
     attributes:
       value: |
-        Une question posée ici reçoit une réponse que **toute la promotion peut lire**.
-        C'est la raison d'être de ce canal : votre blocage est rarement le vôtre seul.
+        A question asked here gets an answer **the whole cohort can read**.
+        That is the point of this channel: your problem is rarely yours alone.
 
-        Remplissez les champs dans l'ordre. Il arrive souvent qu'on trouve la réponse
-        en écrivant le formulaire — c'est normal, et c'est le but.
+        Fill the fields in order. It is common to find the answer while writing the
+        form — that is normal, and it is the point.
 
   - type: input
     id: os
     attributes:
-      label: Système d'exploitation
+      label: Operating system
       placeholder: "Windows 11 / macOS 15.2 / Ubuntu 24.04"
     validations:
       required: true
@@ -23,59 +23,59 @@ body:
   - type: input
     id: version
     attributes:
-      label: Langage et version
-      description: "Obtenue par `R.version.string`, `python --version`, `quarto --version`, `git --version`."
+      label: Language and version
+      description: "From `R.version.string`, `python --version`, `quarto --version`, `git --version`."
       placeholder: "Python 3.12.4 / R 4.4.1"
     validations:
       required: true
 
   - type: textarea
-    id: objectif
+    id: goal
     attributes:
-      label: Ce que vous essayiez de faire
-      description: Une ou deux phrases. Le but, pas le symptôme.
-      placeholder: "Charger le fichier comtrade_fr_roundwood_dirty.csv du TP2 et calculer la valeur unitaire."
+      label: What you were trying to do
+      description: One or two sentences. The goal, not the symptom.
+      placeholder: "Load comtrade_fr_roundwood_dirty.csv from lab 2 and compute a unit value."
     validations:
       required: true
 
   - type: textarea
     id: code
     attributes:
-      label: Le code minimal qui reproduit le problème
+      label: The minimal code that reproduces the problem
       description: >-
-        Le plus court possible. Retirez tout ce qui n'est pas nécessaire pour déclencher
-        l'erreur — souvent, cette réduction révèle la cause.
+        As short as possible. Strip out everything that is not needed to trigger the
+        error — that reduction often reveals the cause on its own.
       render: r
     validations:
       required: true
 
   - type: textarea
-    id: erreur
+    id: error
     attributes:
-      label: Le message d'erreur COMPLET
+      label: The COMPLETE error message
       description: >-
-        Copié-collé en texte, pas une capture d'écran, et en entier — y compris les
-        lignes qui semblent inutiles. La cause y est presque toujours.
+        Copied as text, not as a screenshot, and in full — including the lines that look
+        irrelevant. The cause is almost always in there.
       render: shell
     validations:
       required: true
 
   - type: textarea
-    id: tentatives
+    id: attempts
     attributes:
-      label: Ce que vous avez déjà essayé
-      description: Évite qu'on vous propose ce que vous venez de faire.
+      label: What you have already tried
+      description: Saves you being told to do what you have just done.
     validations:
       required: true
 
   - type: checkboxes
-    id: verifications
+    id: checks
     attributes:
-      label: Vérifications
+      label: Checks
       options:
-        - label: J'ai relu le message d'erreur en entier.
+        - label: I have read the error message in full.
           required: true
-        - label: J'ai cherché si la question était déjà posée dans les issues du dépôt.
+        - label: I have searched the repository issues for the same question.
           required: true
-        - label: Mon code ne contient aucun chemin absolu ni `setwd()`.
+        - label: My code contains no absolute path and no `setwd()`.
           required: true

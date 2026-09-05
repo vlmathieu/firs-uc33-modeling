@@ -1,159 +1,157 @@
-# Jeux de données
+# Datasets
 
-## `comtrade_fr_roundwood_clean.csv` et `comtrade_fr_roundwood_dirty.csv`
+## `comtrade_fr_roundwood_clean.csv` and `comtrade_fr_roundwood_dirty.csv`
 
-Le **commerce extérieur français de bois ronds**, 2022-2024, d'après UN Comtrade.
+**French external trade in roundwood**, 2022-2024, from UN Comtrade.
 
-Deux fichiers, **le même contenu**. Seul le format change.
+Two files, **the same content**. Only the format differs.
 
-| Fichier | Encodage | Séparateur | Décimales |
+| File | Encoding | Separator | Decimals |
 |---|---|---|---|
 | `..._clean.csv` | UTF-8 | `,` | `.` |
 | `..._dirty.csv` | Latin-1 | `;` | `,` |
 
-Le second n'a pas été bricolé pour l'exercice : c'est ce que produit un export depuis
-un Excel configuré en français. Vous en recevrez de cette forme toute votre carrière.
+The second was not rigged for the exercise: it is what an export from a
+French-configured Excel produces. You will be handed files in that shape for your
+entire career.
 
 ---
 
-## Périmètre
+## Scope
 
-| Dimension | Sélection |
+| Dimension | Selection |
 |---|---|
-| Source | UN Comtrade, classification SH, données annuelles |
-| Période | 2022, 2023, 2024 |
-| Filtre | toutes les lignes où **la France est déclarante ou partenaire** |
-| Produits | 3 positions à 6 chiffres, toutes en **bois ronds** (grumes) |
-| Flux | importations et exportations |
-| Volume | **674 lignes, 13 colonnes** |
+| Source | UN Comtrade, HS classification, annual data |
+| Period | 2022, 2023, 2024 |
+| Filter | every row where **France is either reporter or partner** |
+| Products | 3 six-digit headings, all **roundwood** (logs) |
+| Flows | imports and exports |
+| Size | **674 rows, 13 columns** |
 
-### Les trois produits
+### The three products
 
-| Code SH | Produit |
+| HS code | Product |
 |---|---|
-| `440323` | Bois de sapin (*Abies* spp.) et d'épicéa (*Picea* spp.), bruts, plus grande dimension transversale ≥ 15 cm |
-| `440349` | Bois tropicaux bruts, autres que dark red meranti, light red meranti et meranti bakau |
-| `440391` | Bois de chêne (*Quercus* spp.), bruts |
+| `440323` | Fir (*Abies* spp.) and spruce (*Picea* spp.), in the rough, smallest cross-sectional dimension ≥ 15 cm |
+| `440349` | Tropical wood in the rough, other than dark red meranti, light red meranti and meranti bakau |
+| `440391` | Oak (*Quercus* spp.), in the rough |
 
-Tous sont des **grumes** : du bois non transformé. C'est délibéré — l'export de grumes
-de chêne françaises est un sujet de politique forestière vivant, et les données le
-montrent.
+All three are **roundwood**: unprocessed timber. That is deliberate — the export of
+French oak logs is a live forest policy issue, and the data shows it.
 
 ---
 
-## Dictionnaire des variables
+## Data dictionary
 
-### Identification du flux
+### Identifying the flow
 
-| Colonne | Type | Description |
+| Column | Type | Description |
 |---|---|---|
-| `period` | texte | Année de référence. **Stockée en texte**, pas en nombre. |
-| `reporterISO` | texte | Code ISO3 du pays déclarant |
-| `reporterDesc` | texte | Nom du pays déclarant |
-| `flowDesc` | texte | `Import` ou `Export`, **du point de vue du déclarant** |
-| `partnerISO` | texte | Code ISO3 du partenaire. **`W00` = agrégat « tous partenaires ».** |
-| `partnerDesc` | texte | Nom du partenaire ; `World` pour l'agrégat |
-| `cmdCode` | texte | Position SH à 6 chiffres |
-| `cmdDesc` | texte | Libellé officiel du produit. Contient des points-virgules et des virgules. |
+| `period` | text | Reference year. **Stored as text**, not as a number. |
+| `reporterISO` | text | ISO3 code of the reporting country |
+| `reporterDesc` | text | Name of the reporting country |
+| `flowDesc` | text | `Import` or `Export`, **from the reporter's point of view** |
+| `partnerISO` | text | ISO3 code of the partner. **`W00` = the "all partners" aggregate.** |
+| `partnerDesc` | text | Name of the partner; `World` for the aggregate |
+| `cmdCode` | text | Six-digit HS heading |
+| `cmdDesc` | text | Official product label. Contains semicolons and commas. |
 
-### Produit et quantités
+### Product and quantities
 
-| Colonne | Type | Description |
+| Column | Type | Description |
 |---|---|---|
-| `aggrLevel` | entier | Niveau d'agrégation de la position SH. **Vaut 6 sur les 674 lignes** de cet extrait. |
-| `qtyUnitAbbr` | texte | Unité de `qty` : `m³`, ou `N/A` si non renseignée |
-| `qty` | nombre | Quantité dans l'unité ci-dessus |
-| `netWgt` | nombre | Poids net, **en kilogrammes** |
-| `primaryValue` | nombre | Valeur du flux, **en dollars américains** |
+| `aggrLevel` | integer | Aggregation level of the HS heading. **Equals 6 on all 674 rows** of this extract. |
+| `qtyUnitAbbr` | text | Unit of `qty`: `m³`, or `N/A` if not reported |
+| `qty` | number | Quantity in the unit above |
+| `netWgt` | number | Net weight, **in kilograms** |
+| `primaryValue` | number | Value of the flow, **in US dollars** |
 
-> Deux colonnes de grandeur, deux unités différentes : `qty` est un **volume** en m³,
-> `netWgt` un **poids** en kg. Leur rapport est une densité, et c'est là que
-> commence le travail du TP2.
+> Two magnitude columns, two different units: `qty` is a **volume** in m³, `netWgt` a
+> **weight** in kg. Their ratio is a density, and that is where the work of lab 2
+> begins.
 
 ---
 
-## Ce que ces données contiennent vraiment
+## What this data actually contains
 
-Rien de ce qui suit n'a été ajouté. Tout vient de la source.
+Nothing below was added. It all comes from the source.
 
-| Caractéristique | Ampleur |
+| Feature | Extent |
 |---|---|
-| Lignes où le partenaire est l'agrégat `World` | 18 |
-| Quantités nulles (`qty = 0`) | 17 |
-| Poids net manquant | 11 |
-| Unité de `qty` non renseignée (`N/A`) | 11 |
-| `aggrLevel` | **vaut 6 sur les 674 lignes** |
-| Pays aux noms accentués | Côte d'Ivoire, Türkiye, Saint Barthélemy |
-| Lignes où la France commerce avec la France | 3 |
-| Pays déclarants distincts | 63 |
-| Partenaires distincts | 68 |
+| Rows where the partner is the `World` aggregate | 18 |
+| Zero quantities (`qty = 0`) | 17 |
+| Missing net weight | 11 |
+| Unit of `qty` not reported (`N/A`) | 11 |
+| `aggrLevel` | **equals 6 on all 674 rows** |
+| Countries with accented names | Côte d'Ivoire, Türkiye, Saint Barthélemy |
+| Rows where France trades with France | 3 |
+| Distinct reporting countries | 63 |
+| Distinct partners | 68 |
 
 ---
 
-## Quatre choses à savoir avant de calculer
+## Four things to know before you compute anything
 
-### 1. `World` n'est pas un pays
+### 1. `World` is not a country
 
-C'est l'agrégat de tous les partenaires. Additionner `primaryValue` sans exclure ces
-lignes **double exactement le total** — et rien ne vous préviendra. Sur les lignes où
-la France est déclarante : **1 557,0 M$ avec `World`, 778,5 M$ sans. Facteur 2,00.**
+It is the aggregate of all partners. Summing `primaryValue` without excluding those
+rows **doubles the total exactly** — and nothing will warn you. On the rows where
+France is the reporter: **1,557.0 M$ with `World`, 778.5 M$ without. Factor 2.00.**
 
-Le repère fiable est `partnerISO == "W00"` — le code réservé à l'agrégat. Filtrer sur
-le nom `partnerDesc != "World"` marche aussi, mais un nom se traduit et se renomme,
-un code non.
+The reliable marker is `partnerISO == "W00"` — the code reserved for the aggregate.
+Filtering on the name `partnerDesc != "World"` also works, but a name gets translated
+and renamed; a code does not.
 
-### 2. Une colonne constante n'est pas une donnée
+### 2. A constant column is not data
 
-`aggrLevel` vaut **6 sur les 674 lignes**. C'est normal — l'extrait ne retient que des
-positions SH à six chiffres — mais cela veut dire qu'aucun filtre, aucun regroupement
-et aucune statistique sur cette colonne n'apporte quoi que ce soit.
+`aggrLevel` equals **6 on all 674 rows**. That is expected — the extract only keeps
+six-digit HS headings — but it means no filter, no grouping and no statistic on that
+column tells you anything.
 
-Regardez la distribution de vos colonnes avant de les utiliser. Une colonne constante
-se repère en une ligne (`table()` en R, `.nunique()` en Python) et vous évite de
-construire un regroupement qui ne regroupe rien.
+Look at the distribution of your columns before using them. A constant column is
+spotted in one line (`table()` in R, `.nunique()` in Python) and saves you building a
+grouping that groups nothing.
 
-### 3. `netWgt / qty` donne une densité, et elle mérite une enquête
+### 3. `netWgt / qty` gives a density, and it deserves investigation
 
-La médiane est à **884 kg/m³**, parfaitement plausible pour du bois vert.
-Mais **13 %** des lignes tombent hors de l'intervalle physiquement défendable
-[200, 1300] kg/m³, avec des valeurs à 1 kg/m³ et à plus de 40 000.
+The median is **884 kg/m³**, perfectly plausible for green timber. But **13 %** of the
+rows fall outside the physically defensible range of [200, 1300] kg/m³, with values at
+1 kg/m³ and above 40,000.
 
-Ce n'est pas inexplicable, et le jeu de données contient de quoi enquêter :
-**les anomalies se concentrent massivement sur les petits flux.** Parmi les lignes
-sous 10 m³, **46 %** sont aberrantes ; au-dessus de 10 m³, seulement **8 %**. Le
-volume médian d'une ligne aberrante est de 20 m³, contre 742 m³ pour une ligne
-plausible.
+This is not inexplicable, and the dataset holds what you need to investigate: **the
+anomalies cluster overwhelmingly on small flows.** Among rows below 10 m³, **46 %** are
+aberrant; above 10 m³, only **8 %**. The median volume of an aberrant row is 20 m³,
+against 742 m³ for a plausible one.
 
-Conclusion honnête, et c'est celle que vous devez pouvoir écrire vous-même : l'essentiel
-des densités absurdes vient d'arrondis et de seuils de déclaration sur des flux
-minuscules. Ce n'est ni une erreur de votre code, ni une raison de tout jeter — c'est
-une raison de filtrer explicitement, et d'écrire pourquoi.
+The honest conclusion, and the one you should be able to write yourself: most of the
+absurd densities come from rounding and reporting thresholds on tiny flows. It is
+neither a bug in your code nor a reason to throw everything away — it is a reason to
+filter explicitly, and to write down why.
 
-### 4. Deux pays ne déclarent pas la même chose
+### 4. Two countries do not report the same thing
 
-En 2023, la France déclare avoir exporté 147 158 m³ de grumes de chêne vers la Chine
-pour 57,2 M$. La Chine déclare en avoir importé 283 521 m³ pour 128,4 M$ depuis la
-France. Facteur 1,9 en volume.
+In 2023 France reports exporting 147,158 m³ of oak logs to China for $57.2M. China
+reports importing 283,521 m³ for $128.4M from France. A factor of 1.9 by volume.
 
-Ce sont les **statistiques miroir**. Une partie de l'écart est structurelle : un import
-est valorisé **CIF** — marchandise, assurance et fret jusqu'à la frontière de
-l'importateur — tandis qu'un export est valorisé **FOB**, marchandise seule. Les deux
-pays décrivent la même cargaison et n'y mettent pas les mêmes choses. Sur ce jeu, les
-imports déclarés totalisent 1 253,6 M$ et les exports 752,1 M$.
+These are **mirror statistics**. Part of the gap is structural: an import is valued
+**CIF** — goods, insurance and freight to the importer's border — while an export is
+valued **FOB**, goods alone. Both countries describe the same cargo and do not put the
+same things in it. On this dataset, reported imports total $1,253.6M and exports
+$752.1M.
 
-Le reste — transit par des ports étrangers, pays d'origine contre pays d'expédition,
-seuils de déclaration — est un objet d'étude à part entière.
+The rest — transit through foreign ports, country of origin versus country of
+consignment, reporting thresholds — is a research topic in its own right.
 
 ---
 
-## Provenance et licence
+## Provenance and licence
 
-- **Source** : United Nations Comtrade Database, <https://comtradeplus.un.org/>
-- **Extraction** : chapitre SH 44, données annuelles, réalisée par V. Mathieu.
-- **Traitement** : sélection de lignes et de colonnes uniquement. **Aucune valeur n'a
-  été modifiée, corrigée ou inventée.** Le fichier « sale » ne diffère du fichier
-  « propre » que par son encodage, son séparateur et sa décimale.
-- **Réutilisation** : extrait dérivé de faible volume, redistribué à des fins
-  d'enseignement. Toute réutilisation doit citer UN Comtrade comme source.
+- **Source**: United Nations Comtrade Database, <https://comtradeplus.un.org/>
+- **Extraction**: HS chapter 44, annual data, carried out by V. Mathieu.
+- **Processing**: row and column selection only. **No value has been modified,
+  corrected or invented.** The "dirty" file differs from the "clean" one only in its
+  encoding, separator and decimal mark.
+- **Reuse**: small derived extract, redistributed for teaching purposes. Any reuse
+  must credit UN Comtrade as the source.
 
-Le fichier source complet (2 millions de lignes) n'est pas versionné dans ce dépôt.
+The full source file (2 million rows) is not versioned in this repository.

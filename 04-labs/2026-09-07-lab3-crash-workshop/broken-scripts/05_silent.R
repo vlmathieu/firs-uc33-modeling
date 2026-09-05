@@ -1,8 +1,8 @@
 # -----------------------------------------------------------------
-# 05 -- Exportations francaises de grumes de chene, 2022-2024
+# 05 -- French oak log exports, 2022-2024
 #
-# Ce script ne plante pas. Il produit un nombre.
-# Votre travail : decider si ce nombre est vrai.
+# This script does not crash. It produces a number.
+# Your job: decide whether that number is true.
 # -----------------------------------------------------------------
 
 trade <- read.csv("data/raw/comtrade_fr_roundwood_clean.csv")
@@ -14,6 +14,6 @@ oak <- subset(trade,
 
 total <- sum(oak$primaryValue)
 
-cat("Exportations francaises de grumes de chene, 2022-2024 :\n")
-cat("  ", round(total / 1e6, 1), "millions USD\n")
-cat("  ", nrow(oak), "flux declares\n")
+cat("French oak log exports, 2022-2024:\n")
+cat("  ", round(total / 1e6, 1), "million USD\n")
+cat("  ", nrow(oak), "reported flows\n")

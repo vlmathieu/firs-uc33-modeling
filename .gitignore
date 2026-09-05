@@ -1,14 +1,14 @@
-# Outils d'assistance -- volontairement hors du depot
+# AI tooling -- deliberately kept out of the repository
 CLAUDE.md
 .claude/
 .cursor/
 .aider*
 
-# Corriges de TP -- publies APRES chaque seance.
-# Retirer ces deux lignes le soir du TP pour les rendre visibles aux etudiants.
-04-tp/**/correction/
+# Lab solutions -- published AFTER each session.
+# Remove these two lines on the evening of the lab to make them visible.
+04-labs/**/solution/
 
-# Donnees sources -- trop lourdes, non redistribuables telles quelles
+# Source data -- too large, and not redistributable as is
 *.parquet
 *.parquet.gzip
 05-data/source/
@@ -31,6 +31,6 @@ venv/
 *_files/
 *_cache/
 
-# Systeme
+# System
 .DS_Store
 Thumbs.db

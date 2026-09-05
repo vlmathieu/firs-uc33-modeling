@@ -1,8 +1,8 @@
 # -----------------------------------------------------------------
-# 05 -- Exportations francaises de grumes de chene, 2022-2024
+# 05 -- French oak log exports, 2022-2024
 #
-# Ce script ne plante pas. Il produit un nombre.
-# Votre travail : decider si ce nombre est vrai.
+# This script does not crash. It produces a number.
+# Your job: decide whether that number is true.
 # -----------------------------------------------------------------
 
 import pandas as pd
@@ -15,6 +15,6 @@ oak = trade[(trade.cmdCode == 440391)
 
 total = oak.primaryValue.sum()
 
-print("Exportations francaises de grumes de chene, 2022-2024 :")
-print(f"   {total / 1e6:.1f} millions USD")
-print(f"   {len(oak)} flux declares")
+print("French oak log exports, 2022-2024:")
+print(f"   {total / 1e6:.1f} million USD")
+print(f"   {len(oak)} reported flows")

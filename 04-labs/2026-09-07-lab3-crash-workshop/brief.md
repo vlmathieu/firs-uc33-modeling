@@ -1,135 +1,132 @@
-# TP3 — Atelier de crash
+# Lab 3 — Crash workshop
 
-**Lundi 7 septembre · 15h15 – 16h05 · 50 minutes · en binôme**
+**Monday 7 September · 15:15 – 16:05 · 50 minutes · in pairs**
 
-## Objectif
+## Goal
 
-Cinq scripts. Aucun ne fait ce qu'il annonce. Réparez-les.
+Five scripts. None of them does what it claims. Repair them.
 
-Ce n'est pas un exercice de rapidité. **L'objectif est la méthode**, pas le nombre de
-scripts réparés. Un binôme qui traite trois scripts en expliquant chaque diagnostic a
-mieux travaillé qu'un binôme qui en corrige cinq au hasard.
+This is not a speed exercise. **The goal is the method**, not the number of scripts
+fixed. A pair that handles three scripts while explaining each diagnosis has done
+better work than a pair that fixes five by guessing.
 
-Les scripts sont dans [`scripts-casses/`](scripts-casses/), en version R et en
-version Python. Prenez celle que vous voulez ; le défi 1 consiste à faire l'autre.
+The scripts are in [`broken-scripts/`](broken-scripts/), in an R and a Python version.
+Take whichever you like; challenge 1 is to do the other one.
 
 ---
 
-## La méthode en quatre temps
+## The four-step method
 
-À appliquer pour chacun, dans cet ordre, sans sauter d'étape.
+Apply it to each script, in order, skipping nothing.
 
-1. **Lire l'erreur.** En entier, jusqu'à la dernière ligne. Un message d'erreur est
-   une *information*, pas une punition. Il contient presque toujours le nom de l'objet
-   fautif et le numéro de ligne.
-2. **Lire la documentation** de la fonction concernée. `?read.csv`, `help(pd.read_csv)`.
-3. **Chercher** le message sur un moteur de recherche, en retirant ce qui vous est
-   propre.
-4. **Demander** — au binôme, puis à l'enseignant.
+1. **Read the error.** In full, down to the last line. An error message is
+   *information*, not punishment. It almost always contains the offending object's name
+   and a line number.
+2. **Read the documentation** for the function involved. `?read.csv`,
+   `help(pd.read_csv)`.
+3. **Search** for the message, stripping out what is specific to you.
+4. **Ask** — your partner first, then the instructor.
 
-Pour chaque script, notez sur une feuille :
+For each script, write down on paper:
 
 | | |
 |---|---|
-| **Symptôme** | ce que la machine affiche |
-| **Diagnostic** | ce qui ne va pas, en une phrase |
-| **Correction** | ce que vous avez changé |
-| **Prévention** | ce qui aurait évité ce bug dès l'écriture |
+| **Symptom** | what the machine prints |
+| **Diagnosis** | what is wrong, in one sentence |
+| **Fix** | what you changed |
+| **Prevention** | what would have avoided this bug at writing time |
 
-La colonne *Prévention* est celle qui vous servira toute l'année.
+The *Prevention* column is the one that will serve you all year.
 
 ---
 
-## Les cinq scripts
+## The five scripts
 
-Prérequis : les deux fichiers de [`05-data/`](../../05-data/) doivent être dans
-`data/raw/`, et vous travaillez depuis un projet ouvert correctement (TP1).
+Prerequisite: both files from [`05-data/`](../../05-data/) must be in `data/raw/`, and
+you are working from a properly opened project (lab 1).
 
-### 1. `01_chemin`
-Compte les lignes du jeu de données. **Message attendu :** le fichier n'existe pas.
+### 1. `01_path`
+Counts the rows in the dataset. **Expected message:** the file does not exist.
 
-### 2. `02_paquet`
-Affiche les cinq premières lignes. **Message attendu :** quelque chose est introuvable
-— une *fonction* en R (`could not find function "read_csv"`), un *nom* en Python
+### 2. `02_package`
+Prints the first five rows. **Expected message:** something cannot be found — a
+*function* in R (`could not find function "read_csv"`), a *name* in Python
 (`NameError: name 'pd' is not defined`).
 
-Attention : il y a **deux causes possibles** à ce type de message. Identifiez laquelle
-s'applique ici, et dites comment vous auriez distingué les deux.
+Careful: there are **two possible causes** for that kind of message. Work out which one
+applies here, and say how you would have told them apart.
 
-### 3. `03_nom`
-Calcule une quantité moyenne. **Message attendu :** un objet est introuvable.
-Le plus court des cinq à corriger, et le plus fréquent dans la vraie vie.
+### 3. `03_name`
+Computes a mean quantity. **Expected message:** an object cannot be found. The shortest
+of the five to fix, and the most frequent in real life.
 
-Observation à faire au passage, elle vaut le détour : Python vous souffle la réponse
-(`Did you mean: 'exports'?`), R se contente de `object 'export' not found`. Les
-messages d'erreur ne se valent pas d'un langage à l'autre. Notez-le.
+Worth noticing in passing: Python hands you the answer
+(`Did you mean: 'exports'?`), R just says `object 'export' not found`. Error messages
+are not equally good across languages. Note it.
 
 ### 4. `04_type`
-Calcule une valeur totale, à partir du fichier **sale**. Le problème est un problème
-de **type**, et il ne se manifeste pas de la même façon dans les deux langages. C'est
-tout l'intérêt de ce script.
+Computes a total value, from the **dirty** file. The problem is a **type** problem, and
+it does not surface the same way in the two languages. That is the whole point of this
+script.
 
-**En R**, une erreur est levée : `invalid 'type' (character) of argument`. Le langage
-refuse d'additionner du texte.
+**In R**, an error is raised: `invalid 'type' (character) of argument`. The language
+refuses to add up text.
 
-**En Python**, rien ne plante. `sum()` sur une colonne de texte **concatène les
-chaînes** et vous rend un nombre de 6 349 caractères de long. Le programme se termine
-normalement.
+**In Python**, nothing crashes. `sum()` on a text column **concatenates the strings**
+and hands you a 6,349-character "number". The program finishes normally.
 
-Diagnostiquez la cause commune, corrigez les deux, puis répondez : lequel des deux
-comportements préférez-vous, et pourquoi ?
+Diagnose the common cause, fix both, then answer: which of the two behaviours do you
+prefer, and why?
 
-**Deuxième problème, en R uniquement.** Une fois l'erreur de type corrigée, regardez
-les noms de pays et la colonne `qtyUnitAbbr`. Vous verrez apparaître `m\xb3` et des
-chaînes illisibles. Essayez de retrouver « Côte d'Ivoire » avec un `grepl()` : vous ne
-trouverez **rien**, alors que la sous-chaîne `voire` est bien là. Expliquez pourquoi,
-puis corrigez. Rien ne plante à aucun moment.
+**Second problem, in R only.** Once the type error is fixed, look at the country names
+and at the `qtyUnitAbbr` column. You will see `m\xb3` and unreadable strings. Try to
+find "Côte d'Ivoire" with a `grepl()`: you will find **nothing**, even though the
+substring `voire` is right there. Explain why, then fix it. Nothing crashes at any
+point.
 
-### 5. `05_silencieux` — le plus important des cinq
+### 5. `05_silent` — the most important of the five
 
-Ce script **ne plante pas**. Il s'exécute proprement et affiche :
+This script **does not crash**. It runs cleanly and prints:
 
 ```
-Exportations francaises de grumes de chene, 2022-2024 :
-   909.7 millions USD
-   104 flux declares
+French oak log exports, 2022-2024:
+   909.7 million USD
+   104 reported flows
 ```
 
-Les deux langages donnent le même résultat, au centime près. Ils ont donc tort de la
-même manière — ce qui devrait déjà vous alerter sur la valeur d'un « ça donne pareil
-dans les deux ».
+The number is wrong. It is exactly **twice** the right answer.
 
-Le nombre est faux. Il est exactement **le double** de la bonne réponse.
+Your task:
 
-Votre travail :
+1. find out why, without being told where to look;
+2. fix it;
+3. **answer the question that matters: how would you have noticed if I had not warned
+   you?**
 
-1. trouver pourquoi, sans qu'on vous dise où regarder ;
-2. corriger ;
-3. **répondre à la question qui compte : comment auriez-vous pu vous en apercevoir
-   si je ne vous avais pas prévenus ?**
+Three rows out of a hundred and four are enough to double the result. No message, no
+warning, nothing in red. A perfectly presentable figure, and a false conclusion.
 
-Trois lignes sur cent quatre suffisent à doubler le résultat. Aucun message, aucun
-avertissement, aucune couleur rouge. Un graphique parfaitement présentable, et une
-conclusion fausse.
+Both languages give the same result, to the cent. So they are wrong in the same way —
+which should already tell you something about the value of "it gives the same in both".
 
-C'est le type d'erreur qui survit à une soutenance, qui se retrouve dans un rapport,
-et qui oriente une décision. Les quatre premiers scripts vous font perdre dix minutes.
-Le cinquième vous fait perdre votre crédibilité.
+This is the kind of error that survives a viva, ends up in a report, and steers a
+decision. The first four scripts cost you ten minutes. The fifth costs you your
+credibility.
 
 ---
 
-## Ce que vous devez avoir compris en sortant
+## What you should have understood by the end
 
-- Un message d'erreur est un cadeau : il vous dit où regarder. L'absence de message
-  ne veut pas dire que tout va bien.
-- Les quatre messages du jour — fichier introuvable, fonction ou nom introuvable,
-  objet introuvable, type invalide — représentent l'écrasante majorité de ce que vous
-  rencontrerez cette année.
-- **Un langage plus permissif n'est pas un langage plus sûr.** R refuse d'additionner
-  du texte ; Python le fait sans broncher. Le script 4 le montre en une ligne.
-- **La seule protection contre l'erreur silencieuse est de savoir à quoi devrait
-  ressembler le résultat avant de le calculer.**
+- An error message is a gift: it tells you where to look. The absence of a message does
+  not mean everything is fine.
+- The four messages of today — file not found, function or name not found, object not
+  found, invalid type — cover the overwhelming majority of what you will meet this
+  year.
+- **A more permissive language is not a safer language.** R refuses to add up text;
+  Python does it without blinking. Script 4 shows it in one line.
+- **The only protection against silent failure is knowing what the result should look
+  like before you compute it.**
 
-Les corrigés sont publiés sur ce dépôt **après la séance**.
+Solutions are published on this repository **after the session**.
 
-Défis pour ceux qui ont fini : [`defis.md`](defis.md).
+Challenges, if you have finished: [`challenges.md`](challenges.md).

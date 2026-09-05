@@ -1,9 +1,9 @@
 # -----------------------------------------------------------------
-# 03 -- Quantite moyenne par flux exporte
+# 03 -- Mean quantity per exported flow
 # -----------------------------------------------------------------
 
 trade <- read.csv("data/raw/comtrade_fr_roundwood_clean.csv")
 
 exports <- subset(trade, flowDesc == "Export")
 
-cat("Quantite moyenne exportee :", mean(export$qty, na.rm = TRUE), "m3\n")
+cat("Mean exported quantity:", mean(export$qty, na.rm = TRUE), "m3\n")

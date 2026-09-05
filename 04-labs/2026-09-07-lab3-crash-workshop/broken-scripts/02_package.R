@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------
-# 02 -- Afficher les cinq premieres lignes
+# 02 -- Print the first five rows
 # -----------------------------------------------------------------
 
 trade <- read_csv("data/raw/comtrade_fr_roundwood_clean.csv")

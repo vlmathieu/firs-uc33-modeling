@@ -1,22 +1,21 @@
 # Changelog
 
-Toutes les modifications notables de ce dépôt sont consignées ici.
-Format : [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/).
+All notable changes to this repository are recorded here.
+Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-Si vous avez téléchargé du matériel avant une date ci-dessous, regardez ce qui a
-changé depuis — en particulier les entrées « Corrigé ».
+If you downloaded material before one of the dates below, check what has changed since
+— particularly the "Fixed" entries.
 
 ## 2026-09-05
 
-### Ajouté
+### Added
 
-- Structure du dépôt, README, licences, `CITATION.cff`.
-- Guide d'installation des prérequis machine (`00-admin/`), version envoyée par mail
-  le 4 septembre.
-- Protocole de demande d'aide et gabarit d'issue GitHub (`00-admin/`, `.github/`).
-- Fiches de référence : équivalences R / Python / Julia, lexique FR-EN, mémo terminal
-  (`02-reference/`).
-- Jeu de données jouet UN Comtrade — commerce extérieur français de bois ronds,
-  2022-2024 — en version propre et version dégradée (`05-data/`).
-- Énoncés et défis des trois TP du 7 septembre, et les cinq scripts cassés du TP3
-  (`04-tp/`).
+- Repository layout, README, licences, `CITATION.cff`.
+- Machine prerequisites installation guide (`00-admin/`), as emailed on 4 September.
+- Help-request protocol and GitHub issue form (`00-admin/`, `.github/`).
+- Reference sheets: R / Python / Julia equivalents, English-French glossary, terminal
+  cheatsheet (`02-reference/`).
+- Toy UN Comtrade dataset — French roundwood trade, 2022-2024 — in a clean and a
+  degraded version (`05-data/`).
+- Briefs and challenges for the three labs of 7 September, and the five broken scripts
+  of lab 3 (`04-labs/`).

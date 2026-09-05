@@ -1,42 +1,41 @@
-# TP2 — Lire des données sales
+# Lab 2 — Reading dirty data
 
-**Lundi 7 septembre · 14h15 – 15h00 · 45 minutes · en binôme**
+**Monday 7 September · 14:15 – 15:00 · 45 minutes · in pairs**
 
-## Objectif
+## Goal
 
-Charger un fichier réel, diagnostiquer ce qui ne va pas, le nettoyer par un script,
-et produire un graphique.
+Load a real file, diagnose what is wrong with it, clean it with a script, and produce a
+figure.
 
-Ce n'est pas un exercice artificiel. Le fichier `comtrade_fr_roundwood_dirty.csv`
-n'a pas été trafiqué pour vous piéger : c'est ce que produit un export depuis un Excel
-configuré en français. Vous en recevrez de cette forme toute votre carrière.
+This is not an artificial exercise. `comtrade_fr_roundwood_dirty.csv` was not rigged to
+trap you: it is what an export from a French-configured Excel produces. You will be
+handed files in that shape for your entire career.
 
-**Travaillez en miroir R / Python** : l'un de vous en R, l'autre en Python, puis
-comparez. Vous verrez que les problèmes sont les mêmes et que les solutions se
-ressemblent.
+**Work as mirrors, R and Python**: one of you in R, the other in Python, then compare.
+You will find the problems are the same and the solutions look alike.
 
 ---
 
-## Socle
+## Core
 
-### 1. Regarder avant de charger (5 min)
+### 1. Look before loading (5 min)
 
-Téléchargez `comtrade_fr_roundwood_dirty.csv` dans `data/raw/`.
+Download `comtrade_fr_roundwood_dirty.csv` into `data/raw/`.
 
-**Ne l'ouvrez pas dans Excel.** Regardez ses premières lignes depuis le terminal :
+**Do not open it in Excel.** Look at its first lines from the terminal:
 
 ```
 head -3 data/raw/comtrade_fr_roundwood_dirty.csv
 ```
 
-Répondez à ces quatre questions avant d'écrire la moindre ligne de code :
+Answer these four questions before writing a single line of code:
 
-- quel est le séparateur de colonnes ?
-- quel est le séparateur décimal ?
-- pourquoi certains champs sont-ils entre guillemets ?
-- combien y a-t-il de colonnes ?
+- what is the column separator?
+- what is the decimal separator?
+- why are some fields quoted?
+- how many columns are there?
 
-### 2. Charger naïvement, et lire l'erreur (5 min)
+### 2. Load naively, and read the error (5 min)
 
 ```r
 trade <- read.csv("data/raw/comtrade_fr_roundwood_dirty.csv")
@@ -46,27 +45,27 @@ trade <- read.csv("data/raw/comtrade_fr_roundwood_dirty.csv")
 trade = pd.read_csv("data/raw/comtrade_fr_roundwood_dirty.csv")
 ```
 
-**Les deux échouent.** Vous n'obtenez pas un tableau bancal : vous obtenez une erreur,
-et ce n'est pas la même dans les deux langages.
+**Both fail.** You do not get a wonky table: you get an error, and it is not the same
+one in the two languages.
 
 | | Message |
 |---|---|
 | R | `more columns than column names` |
 | Python | `UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb3` |
 
-Avant de corriger quoi que ce soit, répondez à trois questions :
+Before fixing anything, answer three questions:
 
-- de quoi se plaint R, exactement ? Quel rapport avec ce que vous avez vu à l'étape 1 ?
-- de quoi se plaint Python ? Ce n'est pas le même problème. Lequel voit-il en premier ?
-- pourquoi deux langages lisant **le même fichier** ne signalent-ils pas la même chose ?
+- what exactly is R complaining about? How does it relate to what you saw at step 1?
+- what is Python complaining about? It is not the same problem. Which one does it hit
+  first?
+- why do two languages reading **the same file** not report the same thing?
 
-C'est le premier exercice de lecture d'erreur de la journée. Un message d'erreur
-désigne le problème que l'outil a rencontré **en premier**, pas la liste de tout ce
-qui ne va pas.
+This is the first error-reading exercise of the day. An error message names the problem
+the tool hit **first**, not the list of everything that is wrong.
 
-### 3. Charger correctement (10 min)
+### 3. Load correctly (10 min)
 
-Trois choses à déclarer : le séparateur, la décimale, l'encodage.
+Three things to declare: the separator, the decimal mark, the encoding.
 
 ```r
 trade <- read.csv("data/raw/comtrade_fr_roundwood_dirty.csv",
@@ -78,98 +77,97 @@ trade = pd.read_csv("data/raw/comtrade_fr_roundwood_dirty.csv",
                     sep=";", decimal=",", encoding="latin-1")
 ```
 
-Vérifiez trois choses :
+Check three things:
 
-- `Côte d'Ivoire` et `Türkiye` s'affichent correctement ;
-- `qty`, `netWgt` et `primaryValue` sont bien numériques ;
-- vous avez **674 lignes et 13 colonnes**.
+- `Côte d'Ivoire` and `Türkiye` display correctly;
+- `qty`, `netWgt` and `primaryValue` are numeric;
+- you have **674 rows and 13 columns**.
 
-> **Un piège que vous allez rencontrer en Python.** La colonne `qtyUnitAbbr` contient
-> la chaîne littérale `N/A`, qui signifie « unité non renseignée ». pandas la convertit
-> automatiquement en valeur manquante. Est-ce ce que vous voulez ? Argumentez, puis
-> décidez — et écrivez votre décision en commentaire.
+> **A trap you will hit in Python.** The `qtyUnitAbbr` column contains the literal
+> string `N/A`, meaning "unit not reported". pandas converts it to a missing value
+> automatically. Is that what you want? Argue it, then decide — and write your decision
+> in a comment.
 
-### 4. Lire les colonnes avant de les utiliser (5 min)
+### 4. Read the columns before using them (5 min)
 
-Ouvrez le [dictionnaire des variables](../../05-data/README.md) et répondez sans rien
-calculer :
+Open the [data dictionary](../../05-data/README.md) and answer without computing
+anything:
 
-- quelle colonne donne un **volume**, et dans quelle unité ?
-- quelle colonne donne un **poids**, et dans quelle unité ?
-- que peut-on obtenir en divisant l'une par l'autre ?
-- que contient `aggrLevel` ? Regardez sa distribution avant de répondre —
-  `table()` en R, `.nunique()` en Python. Que pouvez-vous en faire ?
-- `partnerISO` et `partnerDesc` disent-ils la même chose ? Lequel des deux
-  utiliseriez-vous pour filtrer, et pourquoi ?
+- which column gives a **volume**, and in what unit?
+- which column gives a **weight**, and in what unit?
+- what do you get by dividing one by the other?
+- what is in `aggrLevel`? Look at its distribution before answering — `table()` in R,
+  `.nunique()` in Python. What can you do with it?
+- do `partnerISO` and `partnerDesc` say the same thing? Which of the two would you
+  filter on, and why?
 
-Cinq minutes ici vous éviteront de construire un regroupement qui ne regroupe rien.
+Five minutes here will save you from building a grouping that groups nothing.
 
-### 5. Diagnostiquer (5 min)
+### 5. Diagnose (5 min)
 
-Écrivez un court bloc de contrôle qui répond à ces questions :
+Write a short check block answering these questions:
 
-- combien de valeurs manquantes, et dans quelles colonnes ?
-- combien de lignes ont `qty = 0` ?
-- quelles unités apparaissent dans `qtyUnitAbbr` ?
-- quelles valeurs distinctes prend `partnerDesc` ? **Regardez bien cette liste.**
+- how many missing values, and in which columns?
+- how many rows have `qty = 0`?
+- which units appear in `qtyUnitAbbr`?
+- what distinct values does `partnerDesc` take? **Look at that list carefully.**
 
-La dernière question est la plus importante du TP.
+The last question is the most important in this lab.
 
-### 6. Nettoyer (10 min)
+### 6. Clean (10 min)
 
-Produisez `data/processed/trade_clean.csv` à partir de la version brute, par un
-script, en documentant chaque décision en commentaire — le *pourquoi*, pas le *quoi*.
+Produce `data/processed/trade_clean.csv` from the raw version, with a script,
+documenting every decision in a comment — the *why*, not the *what*.
 
-Au minimum :
+At minimum:
 
-- traiter le cas de l'agrégat `World` ;
-- décider quoi faire des lignes `qty = 0` ;
-- décider quoi faire des poids nets manquants ;
-- décider quoi faire des colonnes qui n'apportent rien ;
-- convertir `period` en nombre si vous en avez besoin comme tel.
+- handle the `World` aggregate;
+- decide what to do with the `qty = 0` rows;
+- decide what to do with the missing net weights;
+- decide what to do with columns that contribute nothing;
+- convert `period` to a number if you need it as one.
 
-Il n'y a pas une seule bonne réponse. Il y a des décisions, qui doivent être écrites.
+There is no single right answer. There are decisions, and they must be written down.
 
-### 7. Un graphique (5 min)
+### 7. A figure (5 min)
 
-Produisez dans `output/figures/` une figure qui montre **l'évolution 2022-2024 des
-exportations françaises de grumes de chêne (`440391`) par pays de destination**, en
-valeur.
+Produce, in `output/figures/`, a figure showing the **2022-2024 trend in French oak log
+exports (`440391`) by destination country**, by value.
 
-Gardez les cinq premiers partenaires, agrégez le reste.
-
----
-
-## Le piège à ne pas manquer
-
-`World` n'est pas un pays. C'est l'agrégat de tous les partenaires.
-
-Si vous sommez `primaryValue` sans exclure ces lignes, **votre total est exactement le
-double du vrai**. Aucune erreur ne sera levée. Votre graphique sera joli. Vos chiffres
-seront faux.
-
-Vérifiez votre nettoyage : sur les lignes où la France est déclarante, le total avec
-`World` fait 1 557,0 M$ et sans `World` 778,5 M$.
-
-Si vous trouvez 1 557, relisez votre filtre.
-
-Un dernier point sur *comment* filtrer. `partnerDesc != "World"` fonctionne, et
-`partnerISO != "W00"` aussi. Préférez le second : un nom se traduit, se renomme et
-s'orthographie de plusieurs façons ; un code réservé, non. C'est un réflexe qui vous
-servira sur toutes les nomenclatures que vous croiserez cette année.
+Keep the top five partners, aggregate the rest.
 
 ---
 
-## Ce que vous devez avoir compris en sortant
+## The trap you must not miss
 
-- Un CSV n'est pas un format, c'est une famille de formats. Séparateur, décimale et
-  encodage se déclarent, ils ne se devinent pas.
-- Une colonne numérique lue comme du texte ne plante pas toujours : parfois elle donne
-  un résultat faux.
-- Une valeur manquante peut être codée de cinq manières dans le même fichier.
-- Une colonne dont le nom semble clair peut être redondante, constante, ou désigner
-  autre chose que ce qu'on croit. On lit le dictionnaire avant de calculer.
-- **Regarder les valeurs distinctes d'une colonne avant de sommer** est le geste qui
-  vous évitera le plus d'erreurs cette année.
+`World` is not a country. It is the aggregate of all partners.
 
-Défis pour ceux qui ont fini : [`defis.md`](defis.md).
+If you sum `primaryValue` without excluding those rows, **your total is exactly twice
+the true one**. No error will be raised. Your figure will look fine. Your numbers will
+be wrong.
+
+Check your cleaning: on the rows where France is the reporter, the total with `World`
+is $1,557.0M and without `World` $778.5M.
+
+If you get 1,557, re-read your filter.
+
+One last point on *how* to filter. `partnerDesc != "World"` works, and so does
+`partnerISO != "W00"`. Prefer the second: a name gets translated, renamed and spelled
+several ways; a reserved code does not. It is a reflex that will serve you on every
+classification you meet this year.
+
+---
+
+## What you should have understood by the end
+
+- A CSV is not a format, it is a family of formats. Separator, decimal mark and
+  encoding are declared, not guessed.
+- A numeric column read as text does not always crash: sometimes it gives a wrong
+  answer.
+- A missing value can be encoded five different ways in the same file.
+- **Looking at the distinct values of a column before summing it** is the single
+  gesture that will save you the most errors this year.
+- A column whose name looks clear can be redundant, constant, or mean something other
+  than you assume. Read the dictionary before computing.
+
+Challenges, if you have finished: [`challenges.md`](challenges.md).

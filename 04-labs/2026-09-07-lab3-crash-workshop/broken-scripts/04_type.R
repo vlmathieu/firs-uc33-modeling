@@ -1,7 +1,7 @@
 # -----------------------------------------------------------------
-# 04 -- Valeur totale des flux du jeu de donnees
+# 04 -- Total value of the flows in the dataset
 # -----------------------------------------------------------------
 
 trade <- read.csv("data/raw/comtrade_fr_roundwood_dirty.csv", sep = ";")
 
-cat("Valeur totale :", sum(trade$primaryValue, na.rm = TRUE), "USD\n")
+cat("Total value:", sum(trade$primaryValue, na.rm = TRUE), "USD\n")

@@ -1,19 +1,20 @@
-# Travaux pratiques
+# Labs
 
-Chaque TP comporte un **socle**, que tout le monde termine, et des **défis**, pour
-ceux qui ont fini. Ne faites pas les défis à la place du socle.
+Each lab has a **core**, which everyone completes, and **challenges**, for those who
+finish early. Do not do the challenges instead of the core.
 
-Les **corrigés sont publiés après la séance**, dans un sous-dossier `correction/`.
+**Solutions are published after the session**, in a `solution/` subfolder.
 
-| TP | Date | Sujet |
+| Lab | Date | Topic |
 |---|---|---|
-| [TP1](2026-09-07-tp1-projet-propre/) | 7 sept., 13h30 | Monter son projet propre |
-| [TP2](2026-09-07-tp2-donnees-sales/) | 7 sept., 14h15 | Lire des données sales |
-| [TP3](2026-09-07-tp3-atelier-de-crash/) | 7 sept., 15h15 | Atelier de crash |
+| [Lab 1](2026-09-07-lab1-clean-project/) | 7 Sept., 13:30 | Building a clean project |
+| [Lab 2](2026-09-07-lab2-dirty-data/) | 7 Sept., 14:15 | Reading dirty data |
+| [Lab 3](2026-09-07-lab3-crash-workshop/) | 7 Sept., 15:15 | Crash workshop |
 
-Vous travaillez **en binôme**. Les binômes sont constitués par les enseignants à
-partir du questionnaire de positionnement, et mélangent les niveaux. Ce sont aussi
-vos binômes pour la cartographie des modèles.
+You work **in pairs**. Pairs are formed by the teaching staff from the positioning
+questionnaire, and deliberately mix levels. They are also your pairs for the model
+cartography.
 
-Règle de dépannage : on demande d'abord à son binôme, ensuite à l'enseignant, et
-[on ouvre une issue](https://github.com/vlmathieu/firs-uc33-modeling/issues/new/choose) pour tout ce qui peut servir aux autres.
+Support rule: ask your partner first, the instructor second, and
+[open an issue](https://github.com/vlmathieu/firs-uc33-modeling/issues/new/choose) for
+anything that could help the others.

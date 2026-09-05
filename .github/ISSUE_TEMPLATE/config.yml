@@ -1,5 +1,5 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Lire d'abord le protocole
-    url: https://github.com/vlmathieu/firs-uc33-modeling/blob/main/00-admin/comment-poser-une-question.md
-    about: Comment poser une question technique pour obtenir une réponse utile. Trois minutes de lecture, souvent la réponse en prime.
+  - name: Read the protocol first
+    url: https://github.com/vlmathieu/firs-uc33-modeling/blob/main/00-admin/how-to-ask-a-question.md
+    about: How to ask a technical question and get a useful answer. Three minutes to read, and often the answer as a bonus.

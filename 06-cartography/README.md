@@ -1,21 +1,21 @@
-# Cartographie des modèles
+# Model cartography
 
-Le livrable évalué de l'UC, à rendre pour le **15 janvier**, en binôme.
+The assessed deliverable of the course unit, due **15 January**, in pairs.
 
-Il s'agit de recenser et d'analyser, selon une grille commune, les modèles rencontrés
-dans l'ensemble de la formation — pas seulement dans cette UC.
+The task is to survey and analyse, against a shared grid, the models encountered
+across the whole programme — not only in this course unit.
 
-**Contenu attendu ici :**
+**Expected here:**
 
-| Fichier | Objet |
+| File | Purpose |
 |---|---|
-| `guidance-note.md` | Ce qui est attendu, sous quelle forme, avec quelles références de typologies existantes dont s'inspirer |
-| `grille-analyse.csv` | La grille d'analyse, en gabarit remplissable |
-| `exemple-fiche-remplie.md` | Une fiche modèle entièrement remplie, à copier |
-| `criteres-evaluation.md` | Les critères d'évaluation |
-| `references-typologies.md` | Bibliographie annotée : protocoles de description, typologies de modèles écologiques et économiques |
+| `guidance-note.md` | What is expected, in what form, with references to existing model typologies to draw on |
+| `analysis-grid.csv` | The analysis grid, as a fillable template |
+| `worked-example.md` | One model sheet, fully filled in, to copy |
+| `assessment-criteria.md` | The assessment criteria |
+| `typology-references.md` | Annotated bibliography: description protocols, ecological and economic model typologies |
 
-*En cours de rédaction. La guidance note est à lire avant octobre, de préférence tôt,
-pour laisser le temps de digérer.*
+*Being written. The guidance note should be read before October, and preferably early,
+to leave time to digest it.*
 
-À partir du 20 octobre, chaque binôme travaille sur son propre dépôt GitHub.
+From 20 October, each pair works on its own GitHub repository.

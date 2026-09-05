@@ -1,11 +1,10 @@
-# Prérequis machine — ce qu'il faut installer
+# Machine prerequisites — what to install
 
-*Version du 4 septembre 2026. Envoyée par mail avant la première séance.*
+*Version of 4 September 2026. Emailed before the first session.*
 
-Comptez **45 minutes à 1 heure**. Partout où ce n'est pas précisé, gardez les options
-par défaut de l'installateur.
+Allow **45 minutes to 1 hour**. Wherever nothing is said, keep the installer defaults.
 
-Installez dans l'ordre : R avant RStudio, sinon RStudio ne trouvera rien à piloter.
+Install in order: R before RStudio, otherwise RStudio has nothing to drive.
 
 ---
 
@@ -13,34 +12,34 @@ Installez dans l'ordre : R avant RStudio, sinon RStudio ne trouvera rien à pilo
 
 <https://cloud.r-project.org/>
 
-Choisissez votre système, puis le lien **base**.
+Pick your system, then the **base** link.
 
 ## b. RStudio Desktop
 
 <https://posit.co/download/rstudio-desktop/>
 
-Version gratuite. **Après R.**
+Free version. **After R.**
 
-## c. Python 3.12 ou plus
+## c. Python 3.12 or later
 
 <https://www.python.org/downloads/>
 
-> **Windows — la seule case qui compte.** Sur le premier écran de l'installateur,
-> cochez **« Add python.exe to PATH »** avant de cliquer sur *Install*. Elle n'est pas
-> cochée par défaut. Sans elle, Python s'installe correctement mais reste invisible
-> depuis le terminal, et vous passerez une heure à chercher pourquoi.
+> **Windows — the one checkbox that matters.** On the installer's first screen, tick
+> **"Add python.exe to PATH"** before clicking *Install*. It is not ticked by default.
+> Without it Python installs correctly but stays invisible from the terminal, and you
+> will spend an hour wondering why.
 
-> **macOS.** Installez-le quand même. Le Python livré avec le système est ancien et
-> réservé à l'usage interne de macOS.
+> **macOS.** Install it anyway. The Python shipped with the system is old and reserved
+> for macOS's own internal use.
 
 ## d. VS Code
 
 <https://code.visualstudio.com/Download>
 
-Puis **trois extensions**, via l'icône Extensions de la barre latérale
-(`Ctrl+Shift+X` sous Windows, `Cmd+Shift+X` sous macOS) :
+Then **three extensions**, through the Extensions icon in the sidebar
+(`Ctrl+Shift+X` on Windows, `Cmd+Shift+X` on macOS):
 
-| Extension | Éditeur |
+| Extension | Publisher |
 |---|---|
 | **Python** | Microsoft |
 | **R** | REditorSupport |
@@ -54,38 +53,37 @@ Puis **trois extensions**, via l'icône Extensions de la barre latérale
 
 <https://git-scm.com/downloads>
 
-git ne sera enseigné qu'en octobre. Installez-le **maintenant** quand même : cela
-économisera environ 45 minutes le 20 octobre, et l'installation est le seul moment
-où ça peut mal se passer.
+git is not taught until October. Install it **now** anyway: it will save about
+45 minutes on 20 October, and installation is the only part that can go wrong.
 
-- **Windows** : toutes les options par défaut, sans exception. L'installateur pose
-  beaucoup de questions ; les réponses proposées sont les bonnes.
-- **macOS** : tapez `git --version` dans le Terminal. macOS vous proposera de
-  l'installer lui-même.
+- **Windows**: every default option, without exception. The installer asks a lot of
+  questions; the answers it proposes are the right ones.
+- **macOS**: type `git --version` in the Terminal. macOS will offer to install it
+  for you.
 
-## g. Un compte GitHub
+## g. A GitHub account
 
 <https://github.com/signup>
 
-Gratuit.
+Free.
 
-> Prenez comme identifiant **`prenom-nom`** plutôt qu'un pseudonyme. Ce compte vous
-> suivra : il figurera sur votre CV, et un recruteur le regardera. Un profil lisible
-> est un actif.
+> Use **`firstname-lastname`** as your username rather than a nickname. This account
+> will follow you: it will appear on your CV, and a recruiter will look at it. A
+> readable profile is an asset.
 
-Demandez ensuite le **GitHub Student Pack** avec votre adresse AgroParisTech :
+Then request the **GitHub Student Pack** with your AgroParisTech address:
 <https://education.github.com/pack>
 
 ---
 
-## Vérification — 2 minutes
+## Check — 2 minutes
 
-Ouvrez un terminal.
+Open a terminal.
 
-- **Windows** : menu Démarrer → *Terminal* ou *PowerShell*
-- **macOS** : Applications › Utilitaires › Terminal
+- **Windows**: Start menu → *Terminal* or *PowerShell*
+- **macOS**: Applications › Utilities › Terminal
 
-Tapez les trois commandes suivantes, une par une :
+Type the three commands below, one at a time:
 
 ```
 python --version
@@ -93,28 +91,27 @@ git --version
 quarto --version
 ```
 
-**Chacune doit renvoyer un numéro de version.** Si l'une répond
-`command not found` (macOS) ou `n'est pas reconnu en tant que commande interne ou
-externe` (Windows), c'est que le programme n'est pas installé, **ou** qu'il est
-installé mais introuvable depuis le terminal — le plus souvent la case PATH oubliée
-au point (c).
+**Each must return a version number.** If one answers `command not found` (macOS) or
+`is not recognized as an internal or external command` (Windows), then either the
+program is not installed, **or** it is installed but the terminal cannot find it —
+most often the PATH checkbox missed at step (c).
 
-Ouvrez enfin RStudio et VS Code une fois chacun, pour vérifier qu'ils démarrent.
+Finally, open RStudio and VS Code once each, to check they start.
 
 ---
 
-## Si ça bloque
+## If you get stuck
 
-Ne restez pas coincé seul jusqu'au dernier moment. Ouvrez une issue sur ce dépôt
-([→ formulaire](https://github.com/vlmathieu/firs-uc33-modeling/issues/new/choose)) en indiquant :
+Do not stay stuck alone until the last minute. Open an issue on this repository
+([→ form](https://github.com/vlmathieu/firs-uc33-modeling/issues/new/choose)) stating:
 
-1. votre système d'exploitation ;
-2. l'étape exacte qui coince ;
-3. **le message d'erreur complet**, copié en texte.
+1. your operating system;
+2. the exact step that fails;
+3. **the complete error message**, copied as text.
 
-Ce n'est pas une formalité : savoir décrire un problème de façon exploitable est une
-compétence du programme, et vous la pratiquerez toute l'année.
-Voir [`comment-poser-une-question.md`](comment-poser-une-question.md).
+This is not a formality: being able to describe a problem usefully is part of the
+syllabus, and you will practise it all year.
+See [`how-to-ask-a-question.md`](how-to-ask-a-question.md).
 
-Si vous n'êtes pas administrateur de votre machine et ne pouvez rien installer,
-signalez-le : une solution existe.
+If you are not an administrator on your machine and cannot install anything, say so:
+there is a solution.

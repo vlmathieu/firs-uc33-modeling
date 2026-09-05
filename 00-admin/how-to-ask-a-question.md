@@ -1,91 +1,87 @@
-# Comment poser une question technique
+# How to ask a technical question
 
-*Trois minutes de lecture. La compétence la plus rentable de l'année.*
-
----
-
-## Pourquoi ça compte
-
-Vous allez poser des questions techniques pendant toute votre carrière : à un forum,
-à un collègue, à une IA, à un enseignant. La qualité de la réponse est presque
-entièrement déterminée par la qualité de la question.
-
-« Ça marche pas » n'a pas de réponse. Pas parce que la personne en face est de
-mauvaise volonté, mais parce qu'il n'y a **rien à quoi répondre**.
-
-Et il y a un bénéfice secondaire, qui est en fait le principal : **on trouve très
-souvent la réponse en formulant la question.** Réduire son problème à un exemple
-minimal, c'est déjà déboguer.
+*Three minutes to read. The highest-return skill of the year.*
 
 ---
 
-## Le reprex
+## Why it matters
 
-Un *reprex* — **repr**oducible **ex**ample — est le plus petit programme complet qui
-reproduit votre problème. Il a quatre propriétés.
+You will be asking technical questions for your entire career: of a forum, a
+colleague, an AI, an instructor. The quality of the answer is almost entirely
+determined by the quality of the question.
 
-**Minimal.** Retirez tout ce qui n'est pas nécessaire au déclenchement de l'erreur.
-Vos 300 lignes se réduisent presque toujours à 5. Faites la réduction : c'est là que
-la cause apparaît.
+"It doesn't work" has no answer. Not because the person on the other side is
+unwilling, but because there is **nothing there to answer**.
 
-**Complet.** Quelqu'un doit pouvoir copier-coller votre code et obtenir la même
-erreur. Cela veut dire : les `library()` / `import` en haut, et les données incluses.
+And there is a side benefit, which is really the main one: **you very often find the
+answer while formulating the question.** Reducing a problem to a minimal example is
+already debugging.
 
-**Reproductible.** Pas de chemin absolu, pas de fichier que vous seul possédez. Si le
-problème vient de vos données, fabriquez trois lignes de données jouets qui le
-reproduisent :
+---
+
+## The reprex
+
+A *reprex* — **repr**oducible **ex**ample — is the smallest complete program that
+reproduces your problem. It has four properties.
+
+**Minimal.** Strip out everything not needed to trigger the error. Your 300 lines
+almost always reduce to 5. Do the reduction: that is where the cause shows up.
+
+**Complete.** Someone must be able to copy and paste your code and get the same error.
+That means the `library()` / `import` lines at the top, and the data included.
+
+**Reproducible.** No absolute paths, no file only you possess. If the problem comes
+from your data, build three rows of toy data that reproduce it:
 
 ```r
-# au lieu de : read.csv("C:/Users/moi/Documents/mes_donnees.csv")
+# instead of: read.csv("C:/Users/me/Documents/my_data.csv")
 d <- data.frame(qty = c(12.5, 0, 3.1), netWgt = c(9800, 450, NA))
 ```
 
-**Accompagné du message d'erreur COMPLET.** En texte, jamais en capture d'écran, et
-en entier. La ligne que vous jugez inutile est souvent celle qui contient la cause.
+**With the COMPLETE error message.** As text, never as a screenshot, and in full. The
+line you judge irrelevant is often the one holding the cause.
 
 ---
 
-## La méthode en quatre temps, avant de demander
+## The four-step method, before asking
 
-1. **Lire l'erreur.** En entier, jusqu'au bout. Un message d'erreur est une
-   *information*, pas une punition. Il contient presque toujours le nom de l'objet
-   fautif et le numéro de la ligne.
-2. **Lire la documentation.** `?read.csv` en R, `help(pd.read_csv)` en Python.
-3. **Chercher.** Collez le message d'erreur dans un moteur de recherche, en retirant
-   ce qui vous est propre (vos noms de fichiers, vos noms de variables).
-4. **Demander.** Avec un reprex.
+1. **Read the error.** In full, to the end. An error message is *information*, not
+   punishment. It almost always contains the name of the offending object and a line
+   number.
+2. **Read the documentation.** `?read.csv` in R, `help(pd.read_csv)` in Python.
+3. **Search.** Paste the error message into a search engine, stripping out what is
+   specific to you — your file names, your variable names.
+4. **Ask.** With a reprex.
 
-Le quatrième temps est légitime. Il vient après les trois autres.
-
----
-
-## Où demander
-
-**Les issues de ce dépôt** sont le canal officiel de l'UC.
-
-[→ Ouvrir une issue](https://github.com/vlmathieu/firs-uc33-modeling/issues/new/choose)
-
-Le formulaire vous demande exactement les éléments ci-dessus. Ce n'est pas de
-l'administration : c'est le reprex, imposé par l'outil.
-
-Avantage sur le mail : la réponse est lisible par toute la promotion, et elle reste
-consultable. Votre blocage n'est presque jamais le vôtre seul.
-
-Dépôt public : aucun nom, aucune donnée personnelle, aucune capture contenant un
-identifiant.
+The fourth step is legitimate. It comes after the other three.
 
 ---
 
-## Et l'IA ?
+## Where to ask
 
-Les mêmes règles s'appliquent, pour la même raison : une IA à qui vous donnez le
-contexte, la version et le message d'erreur complet répond bien mieux qu'à « ça
-marche pas ».
+**The issues on this repository** are the official channel for the course unit.
 
-Deux différences à garder en tête. Une IA répond toujours, y compris quand elle a
-tort, et avec le même ton assuré. Et elle ne vous dira pas qu'elle n'a pas compris.
-Demandez-lui une **explication** plutôt qu'un bloc de code à recopier — vous saurez
-alors si la réponse tient.
+[→ Open an issue](https://github.com/vlmathieu/firs-uc33-modeling/issues/new/choose)
 
-Le cadre de déclaration de l'usage de l'IA dans vos rendus est traité dans le cours
-dédié de la formation et rappelé au §9 du syllabus.
+The form asks for exactly the elements above. That is not administration: it is the
+reprex, enforced by the tool.
+
+Advantage over email: the answer is readable by the whole cohort, and it stays
+available. Your problem is almost never yours alone.
+
+Public repository: no names, no personal data, no screenshot containing an identifier.
+
+---
+
+## What about AI?
+
+The same rules apply, for the same reason: an AI given the context, the version and
+the complete error message answers far better than one given "it doesn't work".
+
+Two differences to keep in mind. An AI always answers, including when it is wrong, and
+with exactly the same confident tone. And it will not tell you it did not understand.
+Ask it for an **explanation** rather than a block of code to paste — then you can tell
+whether the answer holds.
+
+The rules on declaring AI use in your submitted work are covered by the dedicated
+course in the programme and restated in §9 of the syllabus.

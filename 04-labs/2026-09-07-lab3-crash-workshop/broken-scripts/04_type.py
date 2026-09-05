@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------
-# 04 -- Valeur totale des flux du jeu de donnees
+# 04 -- Total value of the flows in the dataset
 # -----------------------------------------------------------------
 
 import pandas as pd
@@ -7,4 +7,4 @@ import pandas as pd
 trade = pd.read_csv("data/raw/comtrade_fr_roundwood_dirty.csv",
                     sep=";", encoding="latin-1")
 
-print("Valeur totale :", trade.primaryValue.sum(), "USD")
+print("Total value:", trade.primaryValue.sum(), "USD")

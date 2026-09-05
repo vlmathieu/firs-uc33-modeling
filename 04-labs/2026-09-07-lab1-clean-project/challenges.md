@@ -1,53 +1,53 @@
-# TP1 — Défis
+# Lab 1 — Challenges
 
-À prendre si vous avez terminé le socle. Ne les faites pas à la place du socle.
+Take these if you have finished the core. Do not do them instead of it.
 
-## 1. La version Python
+## 1. The Python version
 
-Refaites l'étape 4 en Python, dans `src/01_import.py`, avec `pathlib` :
+Redo step 4 in Python, in `src/01_import.py`, using `pathlib`:
 
 ```python
 from pathlib import Path
 ROOT = Path(__file__).parent.parent
 ```
 
-Comparez avec la solution R. Qu'est-ce qui est plus explicite dans chacune des deux ?
+Compare with the R solution. What is more explicit in each of the two?
 
-## 2. Casser volontairement le projet
+## 2. Break the project on purpose
 
-Déplacez `uc33-tp1` ailleurs sur votre disque, puis relancez le script. Si vous avez
-bien travaillé, rien ne change. Si quelque chose casse, vous aviez encore un chemin
-absolu quelque part.
+Move `uc33-lab1` somewhere else on your disk, then run the script again. If you did the
+work properly, nothing changes. If something breaks, you still had an absolute path
+somewhere.
 
-Recommencez en renommant le dossier.
+Do it again, this time by renaming the folder.
 
-## 3. Les paramètres hors du code
+## 3. Parameters out of the code
 
-Créez `config/config.yml` :
+Create `config/config.yml`:
 
 ```yaml
-fichier_entree: data/raw/comtrade_fr_roundwood_clean.csv
-annee_min: 2023
+input_file: data/raw/comtrade_fr_roundwood_clean.csv
+min_year: 2023
 ```
 
-Lisez-le depuis R (`yaml::read_yaml()`) ou Python (`yaml.safe_load()`) et faites
-disparaître toutes les valeurs écrites en dur de votre script.
+Read it from R (`yaml::read_yaml()`) or Python (`yaml.safe_load()`) and remove every
+hard-coded value from your script.
 
-C'est un avant-goût du 23 octobre.
+This is a foretaste of 23 October.
 
-## 4. Le nommage à l'épreuve
+## 4. Naming, put to the test
 
-Créez dans `data/raw/` un fichier nommé `Données récoltées (final).csv`, essayez de
-le lire depuis votre script, et expliquez à votre binôme **trois raisons distinctes**
-pour lesquelles ce nom est un problème.
+Create a file in `data/raw/` called `Données récoltées (final).csv`, try to read it from
+your script, and explain to your partner **three distinct reasons** why that name is a
+problem.
 
-Puis supprimez-le.
+Then delete it.
 
-## 5. Lire le dépôt du cours comme un projet
+## 5. Read the course repository as a project
 
-Ouvrez [le dépôt de l'UC](https://github.com/vlmathieu/firs-uc33-modeling) et vérifiez
-qu'il respecte les règles qu'il vous impose : pas d'accent ni d'espace dans les noms,
-dates en `AAAA-MM-JJ`, ordre explicite, README à la racine.
+Open [the course repository](https://github.com/vlmathieu/firs-uc33-modeling) and check
+that it follows the rules it imposes on you: no accents or spaces in names, dates as
+`YYYY-MM-DD`, explicit ordering, a README at the root.
 
-**S'il ne les respecte pas quelque part, ouvrez une issue.** C'est sérieux : la
-première trouvée gagne le droit de le dire en cours.
+**If it fails anywhere, open an issue.** This is serious: the first one found earns the
+right to say so in class.

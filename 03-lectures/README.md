@@ -1,14 +1,14 @@
-# Supports de cours
+# Lecture material
 
-Un dossier par séance, daté en `AAAA-MM-JJ` pour que l'ordre alphabétique soit
-l'ordre chronologique.
+One folder per session, dated `YYYY-MM-DD` so that alphabetical order is chronological
+order.
 
-| Séance | Contenu |
+| Session | Content |
 |---|---|
-| `2026-09-04-ouverture` | Présentation de l'UC et de la cartographie des modèles |
-| `2026-09-07-fondamentaux` | Langages, vocabulaire, IDE, terminal, anatomie d'un projet et d'un script |
-| `2026-10-20-git` | Versionner et collaborer : git et GitHub |
-| `2026-10-21-environnements-julia` | Environnements, dépendances, et Julia |
-| `2026-10-23-tests-ci` | Fiabiliser et automatiser : tests, literate programming, intégration continue |
+| `2026-09-04-opening` | Introduction to the course unit and to the model cartography |
+| `2026-09-07-fundamentals` | Languages, vocabulary, editors, the terminal, the anatomy of a project and of a script |
+| `2026-10-20-git` | Version control and collaboration: git and GitHub |
+| `2026-10-21-environments-julia` | Environments, dependencies, and Julia |
+| `2026-10-23-tests-ci` | Making code reliable and automated: tests, literate programming, continuous integration |
 
-Les supports sont mis en ligne après chaque séance.
+Slides go online after each session.

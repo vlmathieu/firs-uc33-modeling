@@ -1,34 +1,34 @@
-# TP1 — Monter son projet propre
+# Lab 1 — Building a clean project
 
-**Lundi 7 septembre · 13h30 – 14h15 · 45 minutes · en binôme**
+**Monday 7 September · 13:30 – 14:15 · 45 minutes · in pairs**
 
-## Objectif
+## Goal
 
-À la fin de ce TP, votre dossier de travail tourne **sur la machine de votre binôme,
-sans qu'il ait rien à modifier**. C'est le cran 3 de l'échelle de reproductibilité,
-et il sera vérifié par quelqu'un d'autre que vous.
+By the end of this lab your working folder runs **on your partner's machine, with
+nothing for them to change**. That is rung 3 of the reproducibility ladder, and it will
+be checked by someone other than you.
 
-Vous travaillez chacun sur votre machine. Le contrôle croisé est en fin de séance.
+You each work on your own machine. The cross-check comes at the end.
 
 ---
 
-## Socle
+## Core
 
-### 1. Récupérer le gabarit (5 min)
+### 1. Get the template (5 min)
 
-Téléchargez le dépôt `uc33-project-template` (bouton vert *Code* → *Download ZIP*),
-décompressez-le, renommez le dossier `uc33-tp1`.
+Download the `uc33-project-template` repository (green *Code* button → *Download ZIP*),
+unzip it, rename the folder `uc33-lab1`.
 
-**Placez-le en dehors de tout dossier synchronisé** — pas dans OneDrive, iCloud,
-Google Drive ni Dropbox. Ces services déplacent les fichiers sous vos pieds. Si vous
-n'avez pas le choix, notez-le : nous en reparlerons si quelque chose casse.
+**Put it outside any synced folder** — not in OneDrive, iCloud, Google Drive or
+Dropbox. Those services move files while you are standing on them. If you have no
+choice, note it: we will come back to it if something breaks.
 
-Vérifiez que vous obtenez bien cette arborescence :
+Check that you get this layout:
 
 ```
-uc33-tp1/
+uc33-lab1/
 ├── data/
-│   ├── raw/          <- vide pour l'instant
+│   ├── raw/          <- empty for now
 │   └── processed/
 ├── src/
 │   ├── 01_import.R
@@ -43,97 +43,97 @@ uc33-tp1/
 └── uc33-project.Rproj
 ```
 
-Renommez `uc33-project.Rproj` en `uc33-tp1.Rproj` : le fichier `.Rproj` porte
-habituellement le nom du projet.
+Rename `uc33-project.Rproj` to `uc33-lab1.Rproj`: an `.Rproj` file normally carries the
+project's name.
 
-### 2. Installer les données (2 min)
+### 2. Install the data (2 min)
 
-Téléchargez `comtrade_fr_roundwood_clean.csv` depuis
-[`05-data/`](../../05-data/) et placez-le dans **`data/raw/`**.
+Download `comtrade_fr_roundwood_clean.csv` from [`05-data/`](../../05-data/) and put it
+in **`data/raw/`**.
 
-À partir de maintenant, ce fichier est en lecture seule. Vous ne l'ouvrez pas dans
-Excel, vous ne l'écrasez pas, vous ne le renommez pas.
+From now on that file is read-only. You do not open it in Excel, you do not overwrite
+it, you do not rename it.
 
-### 3. Ouvrir le projet, des deux façons (5 min)
+### 3. Open the project, both ways (5 min)
 
-**Dans RStudio** : double-cliquez sur `uc33-tp1.Rproj`. Vérifiez en haut à droite que
-le nom du projet apparaît, puis tapez dans la console :
+**In RStudio**: double-click `uc33-lab1.Rproj`. Check that the project name appears in
+the top right corner, then type in the console:
 
 ```r
 getwd()
 ```
 
-Le résultat doit être la racine de `uc33-tp1`. C'est ce que fait le fichier `.Rproj`,
-et c'est la raison pour laquelle vous n'écrirez jamais `setwd()`.
+The result must be the project root. That is what the `.Rproj` file does, and it is why
+you will never write `setwd()`.
 
-**Dans VS Code** : *File* → *Open Folder* → sélectionnez `uc33-tp1`. Vous devez voir
-toute l'arborescence dans l'explorateur de gauche, et non un seul fichier.
+**In VS Code**: *File* → *Open Folder* → select `uc33-lab1`. You must see the whole
+tree in the explorer on the left, not a single file.
 
-### 4. Réparer un script (15 min)
+### 4. Fix a script (15 min)
 
-Ouvrez `src/01_import.R`. Il contient trois problèmes. Corrigez-les.
+Open `src/01_import.R`. It contains three problems. Fix them.
 
-1. Un **chemin absolu**. Remplacez-le par un chemin relatif à la racine du projet.
-2. Un **`setwd()`**. Supprimez-le. Il ne doit rien casser : si le projet est ouvert
-   correctement, il est inutile.
-3. Une **sortie écrite au mauvais endroit**. Les données retraitées vont dans
-   `data/processed/`, jamais à côté des données brutes.
+1. An **absolute path**. Replace it with a path relative to the project root.
+2. A **`setwd()`**. Delete it. It should break nothing: if the project is opened
+   properly, it is useless.
+3. An **output written in the wrong place**. Processed data goes in
+   `data/processed/`, never next to the raw data.
 
-Le script doit produire `data/processed/trade_france.csv` et rien d'autre.
+The script must produce `data/processed/trade_france.csv` and nothing else.
 
-### 5. Installer et charger un paquet (5 min)
+### 5. Install and load a package (5 min)
 
 ```r
-install.packages("here")   # une fois, sur la machine
-library(here)              # à chaque session, en haut du script
+install.packages("here")   # once, on the machine
+library(here)              # every session, at the top of the script
 ```
 
-Remplacez votre chemin relatif par un appel à `here()` :
+Replace your relative path with a call to `here()`:
 
 ```r
 read.csv(here("data", "raw", "comtrade_fr_roundwood_clean.csv"))
 ```
 
-Comprenez la différence entre les deux lignes : la première télécharge, la seconde
-déclare un besoin. Elles ne s'écrivent pas au même endroit et pas au même rythme.
+Understand the difference between those two lines: the first downloads, the second
+declares a need. They do not go in the same place and they do not happen at the same
+rhythm.
 
-### 6. « Restart and run all » (5 min)
+### 6. Restart and run all (5 min)
 
-Dans RStudio : `Session > Restart R` (ou `Ctrl+Shift+F10`), puis `Ctrl+Shift+Entrée`.
+In RStudio: `Session > Restart R` (or `Ctrl+Shift+F10`), then `Ctrl+Shift+Enter`.
 
-Votre script doit tourner **de haut en bas, depuis une session vide, sans
-intervention**. S'il plante, vous venez de trouver un bug maintenant plutôt que ce
-soir.
+Your script must run **top to bottom, from an empty session, with no intervention**.
+If it breaks, you have just found a bug now rather than tonight.
 
-Répétez jusqu'à ce que ce soit propre.
+Repeat until it is clean.
 
-### 7. Écrire le README (3 min)
+### 7. Write the README (3 min)
 
-Quatre lignes suffisent, mais elles doivent répondre à trois questions :
+Four lines is enough, but they must answer three questions:
 
-- à quoi sert ce dossier ?
-- que faut-il installer pour le faire tourner ?
-- dans quel ordre lancer les scripts ?
+- what is this folder for?
+- what has to be installed to run it?
+- in what order do the scripts run?
 
-C'est ce document qui fait passer votre projet du cran 2 au cran 3.
+That document is what moves your project from rung 2 to rung 3.
 
-### 8. Contrôle croisé (5 min)
+### 8. Cross-check (5 min)
 
-Échangez vos dossiers avec votre binôme — clé USB, ou une archive zip envoyée par
-mail. Chacun ouvre le projet de l'autre et exécute son script.
+Swap folders with your partner — USB stick, or a zip archive by email. Each of you
+opens the other's project and runs their script.
 
-**Règle : vous n'avez pas le droit de modifier quoi que ce soit, ni de poser une
-question.** Si ça ne tourne pas, notez pourquoi et rendez le dossier.
+**Rule: you may not change anything, and you may not ask a question.** If it does not
+run, write down why and hand the folder back.
 
-C'est le seul test qui compte.
+That is the only test that counts.
 
 ---
 
-## Ce que vous devez avoir compris en sortant
+## What you should have understood by the end
 
-- Un `.Rproj` ouvert fixe le répertoire de travail. C'est tout le problème réglé.
-- Un chemin absolu est une déclaration : « ce script ne marchera que chez moi ».
-- Installer et charger un paquet sont deux gestes distincts.
-- Un script qui ne survit pas à un redémarrage de session n'est pas terminé.
+- An open `.Rproj` fixes the working directory. That solves the whole problem.
+- An absolute path is a declaration: "this script will only ever work on my machine".
+- Installing and loading a package are two distinct actions.
+- A script that does not survive a session restart is not finished.
 
-Défis pour ceux qui ont fini : [`defis.md`](defis.md).
+Challenges, if you have finished: [`challenges.md`](challenges.md).

@@ -1,109 +1,108 @@
-# Lexique du code — français ↔ anglais
+# Code glossary — English ↔ French
 
-Le cours est dispensé en anglais, la documentation que vous lirez l'est aussi, et les
-messages d'erreur également. Cette page fait le pont.
+The course is delivered in English, the documentation you will read is in English, and
+so are the error messages. This page is the bridge.
 
-Les termes **en gras** sont ceux que vous devez reconnaître à l'oral dès le
-7 septembre.
+Terms in **bold** are the ones you must recognise by ear from 7 September.
 
-## Le socle — onze mots
+## The core — eleven words
 
-| Français | English | En une ligne |
+| English | Français | In one line |
 |---|---|---|
-| **variable** | variable | une étiquette collée sur une valeur |
-| **type** | type | la nature d'une valeur : nombre, texte, booléen |
-| **vecteur** | vector | une suite de valeurs de même type |
-| **tableau de données** | data frame | une feuille de calcul vue par un langage |
-| **dictionnaire** | dictionary, dict | une correspondance clé → valeur |
-| **fonction** | function | une machine : elle prend, elle rend |
-| **argument** | argument | ce qu'on donne à la fonction |
-| **valeur de retour** | return value | ce qu'elle rend |
-| **boucle** | loop | répéter une opération, un élément à la fois |
-| **vectorisation** | vectorisation | appliquer l'opération à toute la colonne d'un coup |
-| **paquet**, bibliothèque | package, library | du code écrit par quelqu'un d'autre |
+| **variable** | variable | a label stuck onto a value |
+| **type** | type | the nature of a value: number, text, boolean |
+| **vector** | vecteur | a sequence of values of the same type |
+| **data frame** | tableau de données | a spreadsheet as seen by a programming language |
+| **dictionary**, dict | dictionnaire | a key → value mapping |
+| **function** | fonction | a machine: it takes something in, it gives something back |
+| **argument** | argument | what you hand to the function |
+| **return value** | valeur de retour | what it hands back |
+| **loop** | boucle | repeating an operation, one element at a time |
+| **vectorisation** | vectorisation | applying the operation to the whole column at once |
+| **package**, library | paquet, bibliothèque | code someone else wrote that you reuse |
 
-## Types et valeurs
+## Types and values
 
-| Français | English |
+| English | Français |
 |---|---|
-| entier | integer, `int` |
-| nombre décimal, flottant | float, double, `numeric` |
-| chaîne de caractères | string, character |
-| booléen | boolean, logical |
-| valeur manquante | missing value, `NA`, `NaN`, `None` |
-| affectation | assignment |
-| conversion de type | casting, coercion |
+| integer, `int` | entier |
+| float, double, `numeric` | nombre décimal, flottant |
+| string, character | chaîne de caractères |
+| boolean, logical | booléen |
+| missing value, `NA`, `NaN`, `None` | valeur manquante |
+| assignment | affectation |
+| casting, coercion | conversion de type |
 
-## Écrire du code
+## Writing code
 
-| Français | English |
+| English | Français |
 |---|---|
 | script | script |
-| en-tête | header |
-| commentaire | comment |
+| header | en-tête |
+| comment | commentaire |
 | indentation | indentation |
-| accolade `{}` | brace, curly bracket |
-| crochet `[]` | square bracket |
-| parenthèse `()` | parenthesis (pl. parentheses) |
-| guillemet `"` | quote, quotation mark |
-| point-virgule `;` | semicolon |
-| deux-points `:` | colon |
-| tiret bas `_` | underscore |
-| barre oblique `/` | slash · **antislash `\`** : backslash |
+| brace, curly bracket `{}` | accolade |
+| square bracket `[]` | crochet |
+| parenthesis (pl. parentheses) `()` | parenthèse |
+| quote, quotation mark `"` | guillemet |
+| semicolon `;` | point-virgule |
+| colon `:` | deux-points |
+| underscore `_` | tiret bas |
+| slash `/` · **backslash `\`** | barre oblique · antislash |
 
-## Fichiers et système
+## Files and system
 
-| Français | English |
+| English | Français |
 |---|---|
-| chemin | path |
-| chemin absolu / relatif | absolute / relative path |
-| répertoire de travail | working directory |
-| dossier, répertoire | folder, directory |
-| dossier parent | parent directory |
-| encodage | encoding |
-| séparateur | separator, delimiter |
-| séparateur décimal | decimal separator |
-| terminal, ligne de commande | terminal, shell, command line |
-| invite de commande | prompt |
-| exécuter, lancer | run, execute |
+| path | chemin |
+| absolute / relative path | chemin absolu / relatif |
+| working directory | répertoire de travail |
+| folder, directory | dossier, répertoire |
+| parent directory | dossier parent |
+| encoding | encodage |
+| separator, delimiter | séparateur |
+| decimal separator | séparateur décimal |
+| terminal, shell, command line | terminal, ligne de commande |
+| prompt | invite de commande |
+| run, execute | exécuter, lancer |
 
-## Quand ça casse
+## When things break
 
-| Français | English |
+| English | Français |
 |---|---|
-| erreur | error |
-| avertissement | warning |
-| message d'erreur | error message |
-| déboguer | debug |
-| exemple minimal reproductible | reproducible example, **reprex** |
-| plantage | crash |
-| erreur silencieuse | silent failure |
-| jeu de test | test suite |
-| assertion, garde-fou | assertion, sanity check |
+| error | erreur |
+| warning | avertissement |
+| error message | message d'erreur |
+| debug | déboguer |
+| reproducible example, **reprex** | exemple minimal reproductible |
+| crash | plantage |
+| silent failure | erreur silencieuse |
+| test suite | jeu de test |
+| assertion, sanity check | assertion, garde-fou |
 
-## Projet et reproductibilité
+## Project and reproducibility
 
-| Français | English |
+| English | Français |
 |---|---|
-| dépôt | repository, repo |
-| versionner | to version, version control |
-| valider (un changement) | to commit |
-| branche | branch |
-| fusion | merge |
-| conflit | conflict |
-| dépendance | dependency |
-| environnement (virtuel) | (virtual) environment |
-| fichier de verrouillage | lockfile |
-| reproductibilité | reproducibility |
-| gabarit, modèle de projet | template |
-| données brutes | raw data |
-| données retraitées | processed data |
+| repository, repo | dépôt |
+| to version, version control | versionner |
+| to commit | valider (un changement) |
+| branch | branche |
+| merge | fusion |
+| conflict | conflit |
+| dependency | dépendance |
+| (virtual) environment | environnement (virtuel) |
+| lockfile | fichier de verrouillage |
+| reproducibility | reproductibilité |
+| template | gabarit, modèle de projet |
+| raw data | données brutes |
+| processed data | données retraitées |
 
-## Quatre faux amis
+## Four false friends
 
-| Piège | Explication |
+| Trap | Why |
 |---|---|
-| *library* | en R, `library()` **charge** un paquet déjà installé ; ce n'est pas « installer ». Et une *library* n'est pas une librairie mais une bibliothèque. |
-| *to commit* | ne veut pas dire « s'engager » : enregistrer un instantané de son travail. |
-| *argument* | rien à voir avec une dispute : la valeur passée à une fonction. |
-| *character* | en R, `character` désigne du **texte**, pas un caractère isolé. |
+| *library* | In R, `library()` **loads** an already-installed package; it does not install it. And a *library* is a `bibliothèque`, not a `librairie` (a bookshop). |
+| *to commit* | Nothing to do with `s'engager`: it means saving a snapshot of your work. |
+| *argument* | Nothing to do with a dispute: it is the value passed to a function. |
+| *character* | In R, `character` means **text**, not a single character. |

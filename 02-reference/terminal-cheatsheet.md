@@ -1,56 +1,56 @@
-# Mémo — le terminal, minimum vital
+# Cheatsheet — the terminal, survival level
 
-Une fenêtre où vous **tapez le nom d'un programme au lieu de cliquer sur son icône**.
-C'est tout. L'interface la plus ancienne, et la plus précise.
+A window where you **type the name of a program instead of clicking its icon**. That
+is all it is. The oldest interface there is, and the most precise.
 
-## Où le trouver
+## Where to find it
 
-| Système | Où |
+| System | Where |
 |---|---|
-| Windows | menu Démarrer → *Terminal* ou *PowerShell* |
-| macOS | Applications › Utilitaires › Terminal |
-| RStudio | onglet **Terminal**, à côté de la Console |
-| VS Code | ``Ctrl+` `` (ou menu *Terminal* → *New Terminal*) |
+| Windows | Start menu → *Terminal* or *PowerShell* |
+| macOS | Applications › Utilities › Terminal |
+| RStudio | the **Terminal** tab, next to the Console |
+| VS Code | ``Ctrl+` `` (or menu *Terminal* → *New Terminal*) |
 
-Le plus souvent, vous ne l'ouvrirez pas séparément : il est dans votre éditeur.
+Most of the time you will not open it separately: it lives inside your editor.
 
-## Les cinq gestes
+## The five gestures
 
-| Ce que vous voulez | macOS / Linux | Windows (PowerShell) |
+| What you want | macOS / Linux | Windows (PowerShell) |
 |---|---|---|
-| Où suis-je ? | `pwd` | `pwd` |
-| Que contient ce dossier ? | `ls` | `ls` ou `dir` |
-| Aller dans un dossier | `cd nom_du_dossier` | idem |
-| Remonter d'un niveau | `cd ..` | idem |
-| Lancer un script | `Rscript script.R` · `python script.py` | idem |
+| Where am I? | `pwd` | `pwd` |
+| What is in here? | `ls` | `ls` or `dir` |
+| Go into a folder | `cd folder_name` | same |
+| Go up one level | `cd ..` | same |
+| Run a script | `Rscript script.R` · `python script.py` | same |
 
-**Un terminal est toujours quelque part.** Dans un dossier. C'est le point le plus
-important de cette page : la plupart des « fichier introuvable » viennent de là.
+**A terminal is always somewhere.** In a folder. That is the most important point on
+this page: most "file not found" errors come from there.
 
-## La touche à retenir avant toutes les autres
+## The key to remember before all others
 
 **TAB.**
 
-Tapez les trois premières lettres d'un nom de fichier ou de dossier, appuyez sur TAB,
-le terminal complète. Cela évite 90 % des fautes de frappe — et une faute de frappe
-dans un chemin coûte dix minutes.
+Type the first three letters of a file or folder name, press TAB, and the terminal
+completes it. It prevents ninety per cent of typos — and a typo in a path costs ten
+minutes.
 
-Utilisez TAB. Systématiquement.
+Use TAB. Every time.
 
-## Le PATH, et « command not found »
+## PATH, and "command not found"
 
-Quand vous tapez `python`, le terminal ne fouille pas votre disque. Il regarde dans
-**une liste courte de dossiers, connue d'avance** : le **PATH**.
+When you type `python`, the terminal does not search your disk. It looks in **a short,
+known list of folders**: the **PATH**.
 
-| Message | Ce que ça veut dire |
+| Message | What it means |
 |---|---|
-| `command not found` (macOS) | soit le programme n'est pas installé, |
-| `n'est pas reconnu en tant que commande...` (Windows) | soit il l'est mais n'est pas dans le PATH |
+| `command not found` (macOS) | either the program is not installed, |
+| `is not recognized as an internal or external command` (Windows) | or it is, but it is not on the PATH |
 
-Savoir laquelle des deux, c'est déjà 90 % du dépannage. Sous Windows, la cause la
-plus fréquente est la case **« Add python.exe to PATH »** oubliée à l'installation.
+Knowing which of the two is already ninety per cent of the fix. On Windows the most
+common cause is the **"Add python.exe to PATH"** checkbox missed at installation.
 
-## Vérifier son installation
+## Checking your installation
 
 ```
 python --version
@@ -58,15 +58,15 @@ git --version
 quarto --version
 ```
 
-Chacune doit renvoyer un numéro de version.
+Each must return a version number.
 
-## Quelques commandes utiles ensuite
+## A few commands that become useful next
 
-| Commande | Effet |
+| Command | Effect |
 |---|---|
-| `cd ~` | aller dans son dossier personnel |
-| `mkdir mon_dossier` | créer un dossier |
-| `cat fichier.csv` | afficher le contenu d'un fichier texte |
-| `head -5 fichier.csv` | afficher les 5 premières lignes — utile sur un gros CSV |
-| `↑` (flèche haut) | rappeler la commande précédente |
-| `Ctrl+C` | interrompre un programme qui tourne |
+| `cd ~` | go to your home folder |
+| `mkdir my_folder` | create a folder |
+| `cat file.csv` | print a text file |
+| `head -5 file.csv` | print the first 5 lines — useful on a large CSV |
+| `↑` (up arrow) | recall the previous command |
+| `Ctrl+C` | interrupt a running program |

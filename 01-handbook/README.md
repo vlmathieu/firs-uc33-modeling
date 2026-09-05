@@ -1,12 +1,12 @@
-# Fascicule
+# Handbook
 
-Le livret de cours de l'UC : lexique, commandes R et Python en regard, arborescence
-type, pièges de chemins, méthode de dépannage en quatre temps, reprex.
+The course handbook: glossary, R and Python commands side by side, the standard
+project layout, path traps, the four-step troubleshooting method, the reprex.
 
-Structuré, synthétique, avec exemples. Il sert toute l'année, pas seulement le jour
-où il est distribué — c'est ce qui le distingue d'un polycopié de TP.
+Structured, concise, with examples. It is meant to be used all year, not only on the
+day it is handed out — that is what distinguishes it from a set of lab notes.
 
-**Contenu attendu ici** : `fascicule.qmd` (source Quarto), `_quarto.yml`,
-et le `fascicule.pdf` mis en ligne à chaque révision.
+**Expected here**: `handbook.qmd` (Quarto source), `_quarto.yml`, and the
+`handbook.pdf` published at each revision.
 
-*En cours de rédaction. Distribué en version imprimée le 7 septembre.*
+*Being written. Handed out in printed form on 7 September.*
