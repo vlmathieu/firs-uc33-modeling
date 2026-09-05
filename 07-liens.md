@@ -37,6 +37,6 @@
 
 ## Poser une question
 
-- Les [issues de ce dépôt](../../issues/new/choose) — le canal de l'UC.
+- Les [issues de ce dépôt](https://github.com/vlmathieu/firs-uc33-modeling/issues/new/choose) — le canal de l'UC.
 - Stack Overflow — <https://stackoverflow.com/> (lire d'abord [`comment-poser-une-question.md`](00-admin/comment-poser-une-question.md))
 - Posit Community — <https://forum.posit.co/>

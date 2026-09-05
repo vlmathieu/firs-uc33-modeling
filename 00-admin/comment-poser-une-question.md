@@ -63,7 +63,7 @@ Le quatrième temps est légitime. Il vient après les trois autres.
 
 **Les issues de ce dépôt** sont le canal officiel de l'UC.
 
-[→ Ouvrir une issue](../../../issues/new/choose)
+[→ Ouvrir une issue](https://github.com/vlmathieu/firs-uc33-modeling/issues/new/choose)
 
 Le formulaire vous demande exactement les éléments ci-dessus. Ce n'est pas de
 l'administration : c'est le reprex, imposé par l'outil.

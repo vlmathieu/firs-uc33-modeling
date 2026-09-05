@@ -106,7 +106,7 @@ Ouvrez enfin RStudio et VS Code une fois chacun, pour vérifier qu'ils démarren
 ## Si ça bloque
 
 Ne restez pas coincé seul jusqu'au dernier moment. Ouvrez une issue sur ce dépôt
-([→ formulaire](../../../issues/new/choose)) en indiquant :
+([→ formulaire](https://github.com/vlmathieu/firs-uc33-modeling/issues/new/choose)) en indiquant :
 
 1. votre système d'exploitation ;
 2. l'étape exacte qui coince ;

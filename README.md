@@ -15,7 +15,7 @@ des modèles.
 | Vous êtes… | Allez à |
 |---|---|
 | avant la première séance | [`00-admin/guide-installation.md`](00-admin/guide-installation.md) |
-| bloqué sur une erreur | [`00-admin/comment-poser-une-question.md`](00-admin/comment-poser-une-question.md), puis [ouvrez une issue](../../issues/new/choose) |
+| bloqué sur une erreur | [`00-admin/comment-poser-une-question.md`](00-admin/comment-poser-une-question.md), puis [ouvrez une issue](https://github.com/vlmathieu/firs-uc33-modeling/issues/new/choose) |
 | en train de chercher un mot | [`02-reference/lexique-fr-en.md`](02-reference/lexique-fr-en.md) |
 | en train de traduire du R en Python | [`02-reference/equivalences-r-python-julia.md`](02-reference/equivalences-r-python-julia.md) |
 | en TP | [`04-tp/`](04-tp/) |
@@ -66,7 +66,7 @@ votre version, un exemple minimal et le message d'erreur complet : ce n'est pas 
 bureaucratie, c'est exactement la démarche du *reprex* enseignée le 7 septembre. Il
 arrive souvent qu'on trouve la réponse en remplissant le formulaire.
 
-[→ Ouvrir une issue](../../issues/new/choose) · [→ Le protocole en trois minutes](00-admin/comment-poser-une-question.md)
+[→ Ouvrir une issue](https://github.com/vlmathieu/firs-uc33-modeling/issues/new/choose) · [→ Le protocole en trois minutes](00-admin/comment-poser-une-question.md)
 
 Dépôt public : aucun nom, aucune note, aucune donnée personnelle dans les issues ni
 dans les captures d'écran.
