@@ -1,6 +1,6 @@
 # Lab 1 — Building a clean project
 
-**Monday 7 September · 13:30 – 14:15 · 45 minutes · in pairs**
+**Monday 7 September · 13:50 – 14:35 · 45 minutes · in pairs**
 
 ## Goal
 

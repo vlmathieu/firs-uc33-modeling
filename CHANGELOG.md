@@ -8,6 +8,13 @@ If you downloaded material before one of the dates below, check what has changed
 
 ## 2026-09-05
 
+### Changed
+
+- Afternoon labs of 7 September moved to their final times: lab 1 at 13:50, lab 2 at
+  14:35, lab 3 at 15:35. The session now opens with a presentation of this repository
+  and of the issue channel. Lab 2 straddles the break: steps 1 to 5 before, 6 and 7
+  after.
+
 ### Added
 
 - Repository layout, README, licences, `CITATION.cff`.

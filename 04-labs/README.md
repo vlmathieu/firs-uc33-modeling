@@ -7,9 +7,9 @@ finish early. Do not do the challenges instead of the core.
 
 | Lab | Date | Topic |
 |---|---|---|
-| [Lab 1](2026-09-07-lab1-clean-project/) | 7 Sept., 13:30 | Building a clean project |
-| [Lab 2](2026-09-07-lab2-dirty-data/) | 7 Sept., 14:15 | Reading dirty data |
-| [Lab 3](2026-09-07-lab3-crash-workshop/) | 7 Sept., 15:15 | Crash workshop |
+| [Lab 1](2026-09-07-lab1-clean-project/) | 7 Sept., 13:50 | Building a clean project |
+| [Lab 2](2026-09-07-lab2-dirty-data/) | 7 Sept., 14:35 | Reading dirty data |
+| [Lab 3](2026-09-07-lab3-crash-workshop/) | 7 Sept., 15:35 | Crash workshop |
 
 You work **in pairs**. Pairs are formed by the teaching staff from the positioning
 questionnaire, and deliberately mix levels. They are also your pairs for the model

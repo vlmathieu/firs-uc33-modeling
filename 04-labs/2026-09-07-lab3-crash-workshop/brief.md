@@ -1,6 +1,6 @@
 # Lab 3 — Crash workshop
 
-**Monday 7 September · 15:15 – 16:05 · 50 minutes · in pairs**
+**Monday 7 September · 15:35 – 16:35 · 60 minutes · in pairs**
 
 ## Goal
 

@@ -1,6 +1,6 @@
 # Lab 2 — Reading dirty data
 
-**Monday 7 September · 14:15 – 15:00 · 45 minutes · in pairs**
+**Monday 7 September · 14:35 – 15:35 · 45 minutes of work, split by the break · in pairs**
 
 ## Goal
 
@@ -13,6 +13,9 @@ handed files in that shape for your entire career.
 
 **Work as mirrors, R and Python**: one of you in R, the other in Python, then compare.
 You will find the problems are the same and the solutions look alike.
+
+**The break falls inside this lab**, at 15:00. Steps 1 to 5 come before it, steps 6 and 7
+after. That is deliberate: you diagnose first, you act second.
 
 ---
 
