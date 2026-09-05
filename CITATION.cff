@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "Si vous réutilisez ce matériel pédagogique, merci de le citer ainsi."
+title: "UC 3.3 Modeling — matériel de cours"
+abstract: >-
+  Matériel pédagogique de l'unité de cours 3.3 « Modeling » du parcours FIRS
+  (Forests and their Environment, Innovative Resources and Sustainability),
+  AgroParisTech : programmation scientifique, reproductibilité, et cartographie
+  des modèles forestiers.
+type: software
+authors:
+  - family-names: Mathieu
+    given-names: Valentin
+    affiliation: "AgroParisTech, UMR Silva"
+date-released: 2026-09-05
+license: MIT
+repository-code: "https://github.com/vlmathieu/firs-uc33-modeling"
+keywords:
+  - reproducibility
+  - scientific programming
+  - forest modelling
+  - teaching material

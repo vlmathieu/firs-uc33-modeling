@@ -1,0 +1,32 @@
+# Outils d'assistance -- volontairement hors du depot
+CLAUDE.md
+.claude/
+.cursor/
+.aider*
+
+# Donnees sources -- trop lourdes, non redistribuables telles quelles
+*.parquet
+*.parquet.gzip
+05-data/source/
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+renv/library/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Quarto
+/.quarto/
+*_files/
+*_cache/
+
+# Systeme
+.DS_Store
+Thumbs.db
