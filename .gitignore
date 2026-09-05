@@ -4,6 +4,10 @@ CLAUDE.md
 .cursor/
 .aider*
 
+# Corriges de TP -- publies APRES chaque seance.
+# Retirer ces deux lignes le soir du TP pour les rendre visibles aux etudiants.
+04-tp/**/correction/
+
 # Donnees sources -- trop lourdes, non redistribuables telles quelles
 *.parquet
 *.parquet.gzip
