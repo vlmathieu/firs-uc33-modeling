@@ -23,6 +23,10 @@ If you downloaded material before one of the dates below, check what has changed
   solution uses `ggplot2` as well, for consistency.
 - Lab 1, step 5 installs `ggplot2` alongside `here`, so that lab 2 does not stall on a
   package download.
+- The project template now ships `src/02_cleaning.R` and `.py`: header, dependencies and
+  a loading line. Students no longer retype the plumbing before starting lab 2. The
+  loading line is the naive one that fails — repairing it is the first task of step 6.
+  Lab 1's layout listing and lab 2's step 6 were adjusted to match.
 
 ### Added
 

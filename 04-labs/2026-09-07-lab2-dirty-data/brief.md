@@ -26,10 +26,11 @@ Two places, and the difference between them is the point of the lab.
 **Steps 1 to 5 go in the console.** You are exploring — you look, you print, you throw
 away. Nothing you type there is meant to survive.
 
-**Step 6 goes in a script**: `src/02_cleaning.R` or `src/02_cleaning.py`, inside the
-project you built in lab 1. From there on you are no longer exploring, you are recording
-decisions. A decision that exists only in a console is a decision nobody can check in six
-months — including you.
+**Step 6 goes in a script**: `src/02_cleaning.R` or `src/02_cleaning.py`. It is already
+in the project you built in lab 1 — the template ships it, with its header and a loading
+line. From there on you are no longer exploring, you are recording decisions. A decision
+that exists only in a console is a decision nobody can check in six months — including
+you.
 
 The `02_` prefix is this morning's rule: it says this script runs after `01_import`.
 
@@ -181,10 +182,12 @@ to the end. Do not skim it.
 
 ### 6. Clean (10 min)
 
-**Open a script now**: `src/02_cleaning.R` or `src/02_cleaning.py`.
+**Open `src/02_cleaning.R`** — or `src/02_cleaning.py`. It is already in your project,
+laid out with this morning's skeleton: header, dependencies, load, body, output.
 
-Start from this morning's skeleton — header, dependencies, parameters, body, output — and
-paste in the loading line from step 3. Then work through the five decisions below.
+The loading line it contains is the naive one from step 2, the one that fails. **Your
+first job is to repair it** with what you found at step 3. Then work through the five
+decisions below.
 
 Each one gets a comment saying **why**, not what. `# filter World` is worthless.
 `# W00 is the all-partners aggregate: summing it double-counts every flow` is the
