@@ -16,4 +16,4 @@ partir du questionnaire de positionnement, et mélangent les niveaux. Ce sont au
 vos binômes pour la cartographie des modèles.
 
 Règle de dépannage : on demande d'abord à son binôme, ensuite à l'enseignant, et
-[on ouvre une issue](../../../issues/new/choose) pour tout ce qui peut servir aux autres.
+[on ouvre une issue](https://github.com/vlmathieu/firs-uc33-modeling/issues/new/choose) pour tout ce qui peut servir aux autres.

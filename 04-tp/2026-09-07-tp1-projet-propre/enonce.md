@@ -28,16 +28,23 @@ Vérifiez que vous obtenez bien cette arborescence :
 ```
 uc33-tp1/
 ├── data/
-│   ├── raw/
+│   ├── raw/          <- vide pour l'instant
 │   └── processed/
 ├── src/
+│   ├── 01_import.R
+│   └── 01_import.py
 ├── output/
 │   ├── figures/
 │   └── tables/
 ├── config/
+│   └── config.yml
+├── doc/
 ├── README.md
-└── uc33-tp1.Rproj
+└── uc33-project.Rproj
 ```
+
+Renommez `uc33-project.Rproj` en `uc33-tp1.Rproj` : le fichier `.Rproj` porte
+habituellement le nom du projet.
 
 ### 2. Installer les données (2 min)
 

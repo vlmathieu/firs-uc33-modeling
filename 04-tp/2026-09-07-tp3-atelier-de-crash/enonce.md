@@ -49,18 +49,41 @@ Prérequis : les deux fichiers de [`05-data/`](../../05-data/) doivent être dan
 Compte les lignes du jeu de données. **Message attendu :** le fichier n'existe pas.
 
 ### 2. `02_paquet`
-Affiche les cinq premières lignes. **Message attendu :** une fonction est introuvable.
+Affiche les cinq premières lignes. **Message attendu :** quelque chose est introuvable
+— une *fonction* en R (`could not find function "read_csv"`), un *nom* en Python
+(`NameError: name 'pd' is not defined`).
+
 Attention : il y a **deux causes possibles** à ce type de message. Identifiez laquelle
 s'applique ici, et dites comment vous auriez distingué les deux.
 
 ### 3. `03_nom`
 Calcule une quantité moyenne. **Message attendu :** un objet est introuvable.
-Le plus court des cinq à corriger — et le plus fréquent dans la vraie vie.
+Le plus court des cinq à corriger, et le plus fréquent dans la vraie vie.
+
+Observation à faire au passage, elle vaut le détour : Python vous souffle la réponse
+(`Did you mean: 'exports'?`), R se contente de `object 'export' not found`. Les
+messages d'erreur ne se valent pas d'un langage à l'autre. Notez-le.
 
 ### 4. `04_type`
-Calcule une valeur totale. Il échoue sur un problème de **type**.
-Une fois l'erreur levée corrigée, regardez les noms de pays. Quelque chose d'autre
-ne va pas, et cette fois **rien ne plante**. Corrigez aussi.
+Calcule une valeur totale, à partir du fichier **sale**. Le problème est un problème
+de **type**, et il ne se manifeste pas de la même façon dans les deux langages. C'est
+tout l'intérêt de ce script.
+
+**En R**, une erreur est levée : `invalid 'type' (character) of argument`. Le langage
+refuse d'additionner du texte.
+
+**En Python**, rien ne plante. `sum()` sur une colonne de texte **concatène les
+chaînes** et vous rend un nombre de 6 349 caractères de long. Le programme se termine
+normalement.
+
+Diagnostiquez la cause commune, corrigez les deux, puis répondez : lequel des deux
+comportements préférez-vous, et pourquoi ?
+
+**Deuxième problème, en R uniquement.** Une fois l'erreur de type corrigée, regardez
+les noms de pays et la colonne `qtyUnitAbbr`. Vous verrez apparaître `m\xb3` et des
+chaînes illisibles. Essayez de retrouver « Côte d'Ivoire » avec un `grepl()` : vous ne
+trouverez **rien**, alors que la sous-chaîne `voire` est bien là. Expliquez pourquoi,
+puis corrigez. Rien ne plante à aucun moment.
 
 ### 5. `05_silencieux` — le plus important des cinq
 
@@ -71,6 +94,10 @@ Exportations francaises de grumes de chene, 2022-2024 :
    909.7 millions USD
    104 flux declares
 ```
+
+Les deux langages donnent le même résultat, au centime près. Ils ont donc tort de la
+même manière — ce qui devrait déjà vous alerter sur la valeur d'un « ça donne pareil
+dans les deux ».
 
 Le nombre est faux. Il est exactement **le double** de la bonne réponse.
 
@@ -95,9 +122,11 @@ Le cinquième vous fait perdre votre crédibilité.
 
 - Un message d'erreur est un cadeau : il vous dit où regarder. L'absence de message
   ne veut pas dire que tout va bien.
-- Les quatre messages du jour — fichier introuvable, fonction introuvable, objet
-  introuvable, type invalide — représentent l'écrasante majorité de ce que vous
+- Les quatre messages du jour — fichier introuvable, fonction ou nom introuvable,
+  objet introuvable, type invalide — représentent l'écrasante majorité de ce que vous
   rencontrerez cette année.
+- **Un langage plus permissif n'est pas un langage plus sûr.** R refuse d'additionner
+  du texte ; Python le fait sans broncher. Le script 4 le montre en une ligne.
 - **La seule protection contre l'erreur silencieuse est de savoir à quoi devrait
   ressembler le résultat avant de le calculer.**
 
