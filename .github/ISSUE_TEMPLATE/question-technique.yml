@@ -1,0 +1,81 @@
+name: Question technique
+description: Un blocage sur une installation, un script, une erreur. Remplir ce formulaire, c'est déjà construire un exemple reproductible.
+title: "[Question] "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Une question posée ici reçoit une réponse que **toute la promotion peut lire**.
+        C'est la raison d'être de ce canal : votre blocage est rarement le vôtre seul.
+
+        Remplissez les champs dans l'ordre. Il arrive souvent qu'on trouve la réponse
+        en écrivant le formulaire — c'est normal, et c'est le but.
+
+  - type: input
+    id: os
+    attributes:
+      label: Système d'exploitation
+      placeholder: "Windows 11 / macOS 15.2 / Ubuntu 24.04"
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Langage et version
+      description: "Obtenue par `R.version.string`, `python --version`, `quarto --version`, `git --version`."
+      placeholder: "Python 3.12.4 / R 4.4.1"
+    validations:
+      required: true
+
+  - type: textarea
+    id: objectif
+    attributes:
+      label: Ce que vous essayiez de faire
+      description: Une ou deux phrases. Le but, pas le symptôme.
+      placeholder: "Charger le fichier comtrade_fr_roundwood_dirty.csv du TP2 et calculer la valeur unitaire."
+    validations:
+      required: true
+
+  - type: textarea
+    id: code
+    attributes:
+      label: Le code minimal qui reproduit le problème
+      description: >-
+        Le plus court possible. Retirez tout ce qui n'est pas nécessaire pour déclencher
+        l'erreur — souvent, cette réduction révèle la cause.
+      render: r
+    validations:
+      required: true
+
+  - type: textarea
+    id: erreur
+    attributes:
+      label: Le message d'erreur COMPLET
+      description: >-
+        Copié-collé en texte, pas une capture d'écran, et en entier — y compris les
+        lignes qui semblent inutiles. La cause y est presque toujours.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: tentatives
+    attributes:
+      label: Ce que vous avez déjà essayé
+      description: Évite qu'on vous propose ce que vous venez de faire.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: verifications
+    attributes:
+      label: Vérifications
+      options:
+        - label: J'ai relu le message d'erreur en entier.
+          required: true
+        - label: J'ai cherché si la question était déjà posée dans les issues du dépôt.
+          required: true
+        - label: Mon code ne contient aucun chemin absolu ni `setwd()`.
+          required: true
