@@ -92,6 +92,11 @@ If you downloaded material before one of the dates below, check what has changed
 - Lab 3, challenge 2 gives the guard rail in Python as well as R, both labelled, and
   asks students to run it on the broken script so they see it fail. Two worked
   assertions on the file itself replace the bare instruction to "write three".
+- Lab 3, challenge 3 now writes the script 5 reprex out instead of describing the shape
+  it should have, and says what survived the cut and what did not — including that the
+  numbers were chosen so the double count is visible without arithmetic. What is left to
+  the student is doing the same for one of the other four scripts. Every code line in
+  the file carries a comment saying what it does.
 - Lab 3, challenge 3 explains what a reprex is made of, shows how to build a
   three-row table by hand in each language, and works a complete example through on a
   different bug. The script 5 reprex is still theirs to write.
