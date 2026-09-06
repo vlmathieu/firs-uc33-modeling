@@ -510,6 +510,26 @@ heights.
 
 If yours are twice as tall, you know exactly which line to re-read.
 
+#### One last thing: that figure is ugly
+
+Look at it honestly. Grey background, default palette, a legend the software placed
+wherever it liked, axis labels that are column names, a title that is a filename with a
+code in brackets, thousands separated by nothing, no source, no units on the bars. It is
+what both libraries hand you when you have told them nothing about how the figure should
+look, and it is roughly the level of every first plot anyone ever makes.
+
+That is deliberate today. **The question this afternoon is whether the number is true,
+not whether the chart is beautiful** — and a good-looking figure of a doubled total is
+worse than an ugly figure of a correct one, because it gets believed faster.
+
+But the other half of the job is real, and it is not something you improvise the night
+before a defence. Where the figure becomes readable, honest and persuasive — what to
+put on an axis, what to leave out, which chart answers which question, how a figure
+carries an argument rather than decorating one — is the subject of **Data analytics and
+storytelling**, and you will practise it on your own results in your student projects.
+
+For today: correct first. Beautiful is a different course.
+
 ---
 
 ## The trap you must not miss

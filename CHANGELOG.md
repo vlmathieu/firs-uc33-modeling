@@ -95,6 +95,10 @@ If you downloaded material before one of the dates below, check what has changed
 - Lab 3, challenge 3 explains what a reprex is made of, shows how to build a
   three-row table by hand in each language, and works a complete example through on a
   different bug. The script 5 reprex is still theirs to write.
+- Lab 2, step 7 ends by saying the figure is ugly, and why that is deliberate today:
+  a good-looking chart of a doubled total is worse than an ugly one of a correct total.
+  Making figures readable and persuasive is named as the subject of *Data analytics and
+  storytelling* and of the student projects.
 - Lab 2, challenge 5 answers its own closing question. "Why is CSV still the most
   widely used format in the world" was left hanging at the end of the last challenge of
   the day, where nobody was going to come back to it. The answer ends on the point that
