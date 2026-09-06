@@ -93,7 +93,8 @@ trade = pd.read_csv("data/raw/comtrade_fr_roundwood_dirty.csv")
 
 If that `import` answers `ModuleNotFoundError: No module named 'pandas'`, the package is
 not installed on this machine. `python -m pip install pandas`, **in the terminal**, then
-a new Python session — lab 1, step 5.
+a new Python session. The whole procedure, with the three things that go wrong on the
+way, is in [lab 1, challenge 1](../2026-09-07-lab1-clean-project/challenges.md).
 
 **Both fail.** You do not get a wonky table: you get an error, and it is not the same
 one in the two languages.
@@ -133,10 +134,31 @@ Check three things:
 - `qty`, `netWgt` and `primaryValue` are numeric;
 - you have **674 rows and 13 columns**.
 
-> **A trap you will hit in Python.** The `qtyUnitAbbr` column contains the literal
-> string `N/A`, meaning "unit not reported". pandas converts it to a missing value
-> automatically. Is that what you want? Argue it, then decide — and write your decision
-> in a comment.
+> **A trap you will hit in Python, and only in Python.** The `qtyUnitAbbr` column
+> contains the literal string `N/A`, meaning "unit not reported". pandas treats `N/A` as
+> one of its missing-value markers and converts it, so eleven rows lose the information
+> that the unit was *declared absent*. R does not: `read.csv` only recognises `NA`, and
+> those eleven rows keep the string.
+>
+> Is the conversion what you want? "Unit not reported" and "value absent" are not the
+> same statement. Argue it with your partner, decide, and **write the decision in a
+> comment**. Both lines are one argument long:
+>
+> ```python
+> DIRTY = "data/raw/comtrade_fr_roundwood_dirty.csv"
+>
+> # Python — OPTION 1: let pandas convert it (the default, nothing to write)
+> trade = pd.read_csv(DIRTY, sep=";", decimal=",", encoding="latin-1")
+>
+> # Python — OPTION 2: keep "N/A" as the text it is, and treat only empty cells as missing
+> trade = pd.read_csv(DIRTY, sep=";", decimal=",", encoding="latin-1",
+>                     keep_default_na=False,   # stop reading "N/A", "NULL", "None"... as missing
+>                     na_values=[""])          # an empty cell still counts as missing
+> ```
+>
+> Check what you chose: `trade.qtyUnitAbbr.value_counts()` shows either `m³` alone, or
+> `m³` and `N/A`. There is no right answer. There is a documented one and an
+> undocumented one.
 
 ### 4. Read the columns before using them (5 min)
 

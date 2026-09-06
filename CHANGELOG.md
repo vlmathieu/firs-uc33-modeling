@@ -6,6 +6,36 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 If you downloaded material before one of the dates below, check what has changed since
 — particularly the "Fixed" entries.
 
+## 2026-09-06
+
+### Fixed
+
+- The changelog entry for 2026-09-05 announced a new pandas section in
+  `00-admin/installation-guide.md`. That change was reverted — the guide had already
+  been emailed — and the entry now describes what was actually done: the install lives
+  in the labs. Anyone who went looking for section (d) was looking for something that
+  does not exist.
+- Lab 2, step 2 sent readers to lab 1 **step 5** for the pandas install. Step 5 is the R
+  half of lab 1 and says nothing about pip; the Python install is in lab 1 challenge 1,
+  which is where the link now points.
+
+### Changed
+
+- Lab 2, step 3 gives the code for both sides of the `N/A` decision rather than only
+  posing it. `keep_default_na=False` with `na_values=[""]` is the line that keeps
+  "unit not reported" distinguishable from "value absent", and the note now says that
+  the trap is Python's alone: `read.csv` recognises `NA` and leaves `N/A` as text.
+- Lab 1, step 1 warns about the doubly-wrapped ZIP before the layout listing rather than
+  leaving it to be discovered. It is the most common set-up failure of the afternoon and
+  it is invisible until a path misses.
+- Lab 1, step 6 says what a successful run prints: **361 rows**. Without an expected
+  value, a student cannot tell a working script from one whose filter has drifted — which
+  is the same point step 7 makes about the README.
+- Lab 3's brief says how to run one of the broken scripts from RStudio, from VS Code and
+  from a terminal, and repeats that it must be from the project root. It also gives a
+  time budget: five minutes each for scripts 1 to 3, fifteen for script 4, twenty for
+  script 5, and skip ahead rather than run out of time on the one that matters.
+
 ## 2026-09-05
 
 ### Fixed

@@ -23,6 +23,14 @@ green *Code* button → *Download ZIP*. Unzip it, rename the folder `uc33-lab1`.
 Dropbox. Those services move files while you are standing on them. If you have no
 choice, note it: we will come back to it if something breaks.
 
+> **The commonest fault of the afternoon, and it happens right here.** GitHub wraps a
+> ZIP in a folder named after the branch, and some unzip tools add a folder of their own
+> on top. If the first thing you see inside `uc33-lab1` is *another* folder — anything
+> like `uc33-project-template-main/` — you have one level too many. Go down into it and
+> move its contents up, or rename that inner folder instead.
+>
+> You are looking for `data/`, `src/` and `output/` **directly** inside `uc33-lab1`.
+
 Check that you get this layout:
 
 ```
@@ -127,6 +135,10 @@ Your script must run **top to bottom, from an empty session, with no interventio
 If it breaks, you have just found a bug now rather than tonight.
 
 Repeat until it is clean.
+
+**How you know it worked.** The script prints its own row count, and the answer is
+**361 rows**. A file that appears in `data/processed/` with a different number in it is
+not a success — it is a filter you have changed without meaning to.
 
 ### 7. Write the README (3 min)
 

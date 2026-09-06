@@ -81,8 +81,19 @@ message, which would make script 1 unreadable and the other four indistinguishab
 it.
 
 In RStudio, opening the `.Rproj` guarantees it. In VS Code, opening the *folder*
-`uc33-lab1` does. Then run a script with `Rscript src/broken-scripts/01_path.R` or
-`python src/broken-scripts/01_path.py`, **from the project root**.
+`uc33-lab1` does.
+
+**How to run one of these scripts.** Two routes, and they must agree:
+
+| | |
+|---|---|
+| **RStudio** | Open the file, then `Ctrl+Shift+Enter` (*Source*). Better: `Session > Restart R` first, so a leftover object from the previous script cannot mask the fault. |
+| **VS Code, Python** | Open the file, then the ▷ button — or, in the terminal, `python src/broken-scripts/01_path.py` |
+| **Any terminal** | `Rscript src/broken-scripts/01_path.R` — **from the project root**, never from inside `src/broken-scripts/` |
+
+That last warning is not pedantry. `cd src/broken-scripts` then `python 01_path.py`
+makes all five scripts fail with the same file-not-found, and you will spend twenty
+minutes debugging your own terminal instead of my bugs.
 
 ---
 
@@ -116,6 +127,12 @@ The *Prevention* column is the one that will serve you all year.
 Prerequisite: the ten scripts in `src/broken-scripts/`, both files from
 [`05-data/`](../../05-data/) in `data/raw/`, and a properly opened project — the three
 checks above.
+
+**How to spend the hour.** Scripts 1 to 3 recycle this morning and lab 1; they should
+take about five minutes each. Script 4 is worth fifteen, and **script 5 is worth
+twenty** — it is the one the whole afternoon has been building towards. If you are still
+on script 2 at four o'clock, skip to script 5. Finishing three scripts with a diagnosis
+you can defend beats finishing five by guessing, and this is not a race.
 
 ### 1. `01_path`
 Counts the rows in the dataset. **Expected message:** the file does not exist.
