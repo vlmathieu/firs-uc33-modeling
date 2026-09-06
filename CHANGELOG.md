@@ -70,10 +70,18 @@ If you downloaded material before one of the dates below, check what has changed
 - Lab 3, challenge 3 explains what a reprex is made of, shows how to build a
   three-row table by hand in each language, and works a complete example through on a
   different bug. The script 5 reprex is still theirs to write.
-- The lab 2 solution splits in two. `02_cleaning.R` / `.py` is now the brief and nothing
-  else — five decisions, two of which are a documented "keep". The density work, the
-  aberrant values and the figure move to `02_cleaning_challenges.R` / `.py`, which is
-  what they always were.
+- Lab 2's challenges are rewritten. Every code block is labelled `# R` or `# Python`
+  and every line carries a comment saying what it does — for these pages only, since
+  the what is the lesson here. Challenge 1 says which script to extend, explains what
+  `cut()` / `pd.cut()` and `tapply()` / `.groupby()` actually do, and now walks all the
+  way to the answer instead of stopping at "investigate": the volume bands, the table
+  of results, the smallest volumes, and the three-line conclusion. Challenge 2 moves
+  into `src/04_mirror`, which the template now ships. Challenges 3 and 5 say to work in
+  the console, and 5 loads `pyarrow` rather than assuming it.
+- The lab 2 solution is one script per job, like the project it teaches:
+  `02_cleaning` is the brief, `03_figure` is step 7, `02_cleaning_challenges` is the
+  density investigation, `04_mirror` is the mirror statistics. The figure no longer
+  sits inside a cleaning script.
 - Lab 3, script 5 solutions now assert on `partnerISO` rather than on the `World`
   label, in line with what the lab teaches about codes and labels.
 - Lab 1, step 5 installs `ggplot2` alongside `here`, so that lab 2 does not stall on a

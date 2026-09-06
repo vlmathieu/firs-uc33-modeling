@@ -36,7 +36,9 @@ uc33-lab1/
 │   ├── 02_cleaning.R     <- lab 2. Leave them alone for now.
 │   ├── 02_cleaning.py
 │   ├── 03_figure.R
-│   └── 03_figure.py
+│   ├── 03_figure.py
+│   ├── 04_mirror.R
+│   └── 04_mirror.py
 ├── output/
 │   ├── figures/
 │   └── tables/
