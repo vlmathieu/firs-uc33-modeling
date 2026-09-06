@@ -57,3 +57,6 @@ If you downloaded material before one of the dates below, check what has changed
   of lab 3 (`04-labs/`).
 - PowerShell equivalent of `head -3` in lab 2, step 1 (`Get-Content -Head 3`), for
   Windows users.
+- A model project README for lab 1, step 7, published with the solutions
+  (`solution/project-README-example.md`): the four lines students are asked for, plus
+  what each one saves the reader, and what does not belong in a README.
