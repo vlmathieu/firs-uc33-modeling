@@ -103,6 +103,12 @@ If you downloaded material before one of the dates below, check what has changed
   `value_exporter`, `value_importer` — instead of `partnerDesc` and pandas' `_x` / `_y`
   suffixes. "The importer declares more than the exporter" is readable off the column
   names three weeks later; `primaryValue_y` is not.
+- Lab 3's brief says how to get the broken scripts and where to put them: a new
+  `src/broken-scripts/` folder rather than loose beside the student's own numbered
+  pipeline, the repository ZIP as the download route since GitHub will not hand over a
+  folder, and three checks before starting — ten files, two CSVs, and a working
+  directory that ends in `uc33-lab1`. The scripts read their data relative to the
+  project root, so a script run from the wrong place makes all five fail identically.
 - Lab 2, challenge 5 answers its own closing question. "Why is CSV still the most
   widely used format in the world" was left hanging at the end of the last challenge of
   the day, where nobody was going to come back to it. The answer ends on the point that

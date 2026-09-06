@@ -15,6 +15,77 @@ Take whichever you like; challenge 1 is to do the other one.
 
 ---
 
+## Getting the scripts into your project
+
+**Where they go: a new folder, `src/broken-scripts/`.**
+
+```
+uc33-lab1/
+├── data/
+│   └── raw/           <- BOTH csv files must be here: clean and dirty
+├── src/
+│   ├── 01_import.R        your pipeline
+│   ├── 02_cleaning.R      ...
+│   ├── 03_figure.R        ...
+│   ├── 04_mirror.R        ...
+│   └── broken-scripts/    <- the ten files of this lab go here
+│       ├── 01_path.R
+│       ├── 01_path.py
+│       └── ...
+```
+
+Not loose in `src/`. Your `01_`, `02_`, `03_`, `04_` are a pipeline that runs in that
+order; these ten are ten unrelated exercises that happen to be numbered too. Mixing them
+would make the numbering mean two different things in one folder, which is exactly the
+mistake this morning's naming rule exists to prevent.
+
+**How to download them.** GitHub does not let you download a folder on its own, so
+there are two ways in and the first is faster:
+
+**Either** take the whole course repository at once — on
+[its front page](https://github.com/vlmathieu/firs-uc33-modeling), green *Code* button →
+*Download ZIP*. Unzip it anywhere (your Downloads folder is fine — this is a delivery,
+not a project). Inside, go to
+`04-labs/2026-09-07-lab3-crash-workshop/broken-scripts/` and copy that whole folder into
+your `src/`.
+
+**Or** open each file on GitHub and use the **Download raw file** button, top right of
+the file view. Ten files, ten clicks. Do this only if the ZIP fails.
+
+**If the network is against you**, ask: the files are on a USB stick at the front of the
+room.
+
+### Check before you start
+
+Three things, and it takes twenty seconds:
+
+```r
+# R
+list.files("src/broken-scripts")     # ten files
+list.files("data/raw")               # two csv files
+getwd()                              # must end in uc33-lab1
+```
+
+```python
+# Python
+import os
+os.listdir("src/broken-scripts")     # ten files
+os.listdir("data/raw")               # two csv files
+os.getcwd()                          # must end in uc33-lab1
+```
+
+That last line is not a formality. **These scripts read their data with paths relative
+to the project root** — `data/raw/comtrade_fr_roundwood_clean.csv` — not relative to
+themselves. Run them from anywhere else and every single one fails with the same
+message, which would make script 1 unreadable and the other four indistinguishable from
+it.
+
+In RStudio, opening the `.Rproj` guarantees it. In VS Code, opening the *folder*
+`uc33-lab1` does. Then run a script with `Rscript src/broken-scripts/01_path.R` or
+`python src/broken-scripts/01_path.py`, **from the project root**.
+
+---
+
 ## The four-step method
 
 Apply it to each script, in order, skipping nothing.
@@ -42,8 +113,9 @@ The *Prevention* column is the one that will serve you all year.
 
 ## The five scripts
 
-Prerequisite: both files from [`05-data/`](../../05-data/) must be in `data/raw/`, and
-you are working from a properly opened project (lab 1).
+Prerequisite: the ten scripts in `src/broken-scripts/`, both files from
+[`05-data/`](../../05-data/) in `data/raw/`, and a properly opened project — the three
+checks above.
 
 ### 1. `01_path`
 Counts the rows in the dataset. **Expected message:** the file does not exist.
