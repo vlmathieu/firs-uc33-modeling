@@ -39,18 +39,15 @@ If you downloaded material before one of the dates below, check what has changed
   `Shift+Enter`. `__file__` in a script, `Path.cwd()` in the console, and the reason R
   needs no such distinction.
 - Lab 1, step 1 links straight to the template repository instead of naming it.
-- Lab 1, step 5 now installs a package in **both** languages. R installs from inside R,
-  with a note on what the *Packages* pane button actually does; Python installs
-  `pandas` from the terminal with `python -m pip`, with the `py -m pip` fallback for
-  Windows and the reason bare `pip` can succeed and still leave the module missing. A
-  table sets install (once per machine) against load (every session), which is the
-  distinction lab 3's script 2 turns on.
-- Lab 1, challenge 1 documents the two errors that stop every VS Code user before the
-  exercise starts: `ModuleNotFoundError: No module named 'pandas'`, with the two
-  `sys.executable` calls that identify a two-Python machine, and
-  `NameError: name '__file__' is not defined` when the line is sent to the console with
-  `Shift+Enter`. `__file__` in a script, `Path.cwd()` in the console, and the reason R
-  needs no such distinction.
+- Lab 1, step 5 says what the RStudio *Packages* pane button actually does, and points
+  at challenge 1 for the Python equivalent. The core of lab 1 stays in R.
+- Lab 1, challenge 1 installs `pandas` before asking for anything: the terminal command
+  with its Windows fallback, an install/load table against R's `install.packages()` and
+  `library()`, the four things that go wrong — wrong prompt, bare `pip`, no restart,
+  two Pythons — and the two `sys.executable` calls that identify the last of them. It
+  then explains `NameError: name '__file__' is not defined`, which is what
+  `Shift+Enter` produces on a `pathlib` line: `__file__` in a script, `Path.cwd()` in
+  the console, and the reason R needs no such distinction.
 - Lab 2, step 2 shows the `import pandas as pd` it had left implicit, and says what to
   do if it fails.
 - The challenges that need a package now give the install line: `pyyaml` in lab 1

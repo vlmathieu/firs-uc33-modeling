@@ -85,72 +85,35 @@ The script must produce `data/processed/trade_france.csv` and nothing else.
 
 ### 5. Install and load a package (5 min)
 
-**Do both languages, whichever one you are working in.** You need `pandas` this
-afternoon whether or not you write Python today: lab 2 and lab 3 both use it.
-
-#### R — from inside R
-
 ```r
-install.packages("here")     # once, on the machine
-install.packages("ggplot2")  # you need it in lab 2. Get the download over with now.
-
-library(here)                # every session, at the top of the script
+install.packages("here")   # once, on the machine
+library(here)              # every session, at the top of the script
 ```
 
 There is also a button: the **Packages** pane, bottom right of RStudio, *Install*, type
 the name, *Install*. Watch the console while you click it — it writes
 `install.packages(...)` for you. There is only one mechanism; the button types it.
 
-#### Python — from the terminal, not from Python
+While you are at it, install `ggplot2` too — you will need it in lab 2 and a package
+download in the middle of an exercise wastes everyone's time:
 
-In VS Code, open a terminal: **Terminal → New Terminal**, or ``Ctrl+` ``.
-
+```r
+install.packages("ggplot2")
 ```
-python -m pip install pandas
-```
-
-Then, in your script or console:
-
-```python
-import pandas as pd     # every session, at the top of the script
-```
-
-Three things about that command, because it is the one that goes wrong.
-
-- It runs **in the terminal**, at the ordinary shell prompt. Not at the `>>>` Python
-  prompt, and not in a `.py` file.
-- Write `python -m pip`, not `pip`. Your machine has more than one Python. Bare `pip`
-  may install into one of them while VS Code runs another, and the package is then
-  missing even though the install said it succeeded. `python -m pip` installs into the
-  interpreter that runs the command.
-- **Windows**: if `python` is not recognised, use `py -m pip install pandas`.
-
-After installing, **start a new Python session**. A package installed while a session is
-open is not visible to that session.
-
-#### The distinction that matters, in both languages
-
-| | Install | Load |
-|---|---|---|
-| R | `install.packages("here")` | `library(here)` |
-| Python | `python -m pip install pandas` | `import pandas as pd` |
-| How often | **Once per machine** | **Every session**, at the top of the script |
-
-The first downloads. The second declares a need. They do not go in the same place and
-they do not happen at the same rhythm — and confusing them is the cause of the error you
-will meet in lab 3, script 2.
-
-Note where each one lives, because the two languages disagree: R installs its packages
-**from inside R**, Python installs its packages **from outside Python**. That is why
-RStudio can offer a button and VS Code cannot.
-
-#### Finally, use `here()`
 
 Replace your relative path with a call to `here()`:
 
 ```r
 read.csv(here("data", "raw", "comtrade_fr_roundwood_clean.csv"))
 ```
+
+Understand the difference between those two lines: the first downloads, the second
+declares a need. They do not go in the same place and they do not happen at the same
+rhythm. Install once per machine; load every session.
+
+Python works the same way and says it differently — `pip install` and `import`. The
+commands, and the one trap in them, are in
+[`challenges.md`](challenges.md), challenge 1.
 
 ### 6. Restart and run all (5 min)
 

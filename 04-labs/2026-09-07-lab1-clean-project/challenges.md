@@ -14,32 +14,65 @@ ROOT = Path(__file__).resolve().parents[1]     # the project root
 Two things will stop you before you get there. Both are worth more than the exercise
 itself.
 
-### `ModuleNotFoundError: No module named 'pandas'`
+### First: install pandas
 
+Python cannot read a table on its own. `pandas` is the package that does it, and nothing
+has installed it yet — the prerequisites installed the *language*, not the libraries.
+
+```python
+import pandas as pd
 ```
->>> import pandas as pd
+```
 ModuleNotFoundError: No module named 'pandas'
 ```
 
-pandas is not part of Python. It is a package, and nothing has installed it yet — the
-prerequisites installed the *language*, not the libraries. Step 5 of the brief has the
-command; here it is again, **in the terminal**, not at the `>>>` prompt:
+This is step 5 of the brief, one language over. Same two ideas, different words:
+
+| | Install — once per machine | Load — every session |
+|---|---|---|
+| R | `install.packages("here")` | `library(here)` |
+| Python | `python -m pip install pandas` | `import pandas as pd` |
+
+Open a terminal in VS Code — **Terminal → New Terminal**, or ``Ctrl+` `` — and run:
 
 ```
 python -m pip install pandas
 ```
 
+On Windows, if `python` is not recognised:
+
 ```
 py -m pip install pandas
 ```
 
-The second form is the Windows fallback, for when `python` is not recognised.
+Then **close the Python session and start a new one**, and check:
 
-Then **start a new Python session**: a package installed while a session is open is not
-visible to that session.
+```python
+import pandas as pd
+pd.__version__
+```
 
-If it still says the module is missing after an install that said it succeeded, you have
-two Pythons and you installed into the wrong one. Ask them who they are:
+Four things about that command, because it is the one that goes wrong.
+
+**It runs in the terminal**, at the ordinary shell prompt. Not at the `>>>` Python
+prompt, and not inside a `.py` file. If your cursor sits behind `>>>`, you are in the
+wrong place: type `exit()` first.
+
+**Write `python -m pip`, not `pip`.** Your machine has more than one Python on it,
+whether you know it or not. Bare `pip` may install into one of them while VS Code runs
+another, and the package is then missing even though the install reported success.
+`python -m pip` installs into the interpreter that runs the command.
+
+**Restart the session afterwards.** A package installed while a Python session is open
+is not visible to that session.
+
+**Where the two languages differ.** R installs its packages *from inside R*; Python
+installs its packages *from outside Python*, from the shell. That is why RStudio can
+offer a button and VS Code cannot. Neither is better — but if you only ever learn one,
+you will assume the other behaves the same way, and it does not.
+
+If the import still fails after an install that said it succeeded, you have two Pythons
+and you installed into the one you are not running. Ask them who they are:
 
 ```python
 import sys
@@ -50,11 +83,11 @@ sys.executable      # the interpreter this session is running
 python -c "import sys; print(sys.executable)"
 ```
 
-Run both. If the two paths differ, that is your answer. Fix it in VS Code with
-`Ctrl+Shift+P` → **Python: Select Interpreter**, pick the one you installed into, then
-close the terminal and open a new one.
+Run both. Two different paths is the diagnosis. The fix is `Ctrl+Shift+P` →
+**Python: Select Interpreter**, pick the one you installed into, then close the terminal
+and open a new one.
 
-### `NameError: name '__file__' is not defined`
+### Second: `NameError: name '__file__' is not defined`
 
 ```
 >>> ROOT = Path(__file__).resolve().parents[1]
@@ -68,7 +101,7 @@ the console with `Shift+Enter` and Python is not executing a file — it is exec
 you, one line at a time. There is no file, so there is no `__file__`, and there is
 nothing to take the parent of.
 
-So: the same line belongs in two different forms depending on where it runs.
+So the same line belongs in two different forms depending on where it runs.
 
 | Where | What locates the project root |
 |---|---|
