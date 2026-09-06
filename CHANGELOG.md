@@ -10,13 +10,12 @@ If you downloaded material before one of the dates below, check what has changed
 
 ### Fixed
 
-- The installation guide never asked for **pandas**, without which no Python exercise
-  of 7 September runs. New section (d): `python -m pip install pandas`, plus `pyyaml`
-  and `pyarrow` for the challenges, why `python -m pip` rather than `pip`, and a fourth
-  line in the verification block. Sections (d) to (g) shift to (e) to (h).
-
-### Fixed
-
+- The installation guide never asked for **pandas**, without which no Python exercise of
+  7 September runs. It was too late to correct by email, so the labs carry the install
+  instead: lab 1 challenge 1 installs it before asking for anything, lab 2 step 2 repeats
+  the command at the point where the `import` first fails, and the challenges that need
+  `pyyaml`, `pyarrow` or `matplotlib` each give their own line. **The installation guide
+  is unchanged** — what was emailed on 4 September is still what it says.
 - Lab 2, step 6 claimed `period` was read as text and had students convert it. It is not:
   on this file `period` arrives as an integer in both languages. The columns actually at
   risk are `qty`, `netWgt` and `primaryValue`, whose decimal mark is a comma. Point (e)
@@ -42,7 +41,7 @@ If you downloaded material before one of the dates below, check what has changed
   that finds nothing and says nothing. The instruction to work in the console rather
   than the script is now explicit.
 - Lab 1, step 1 links straight to the template repository instead of naming it, and its
-  layout listing shows the six scripts the template now ships.
+  layout listing shows the eight scripts the template now ships.
 - Lab 2, step 1 links straight to the data file.
 - Lab 2, step 6 gives a runnable line for every option of every decision, not only for
   the ones with a single answer: both ways of filtering the aggregate, dropping the
@@ -56,12 +55,6 @@ If you downloaded material before one of the dates below, check what has changed
   each stage reads a file and writes a file, so one can be re-run, handed over or broken
   on its own. `matplotlib` is named as a separate install, and the `plt` import is shown
   where it belongs.
-- Lab 1, challenge 1 documents the two errors that stop every VS Code user before the
-  exercise starts: `ModuleNotFoundError: No module named 'pandas'`, and
-  `NameError: name '__file__' is not defined` when the line is sent to the console with
-  `Shift+Enter`. `__file__` in a script, `Path.cwd()` in the console, and the reason R
-  needs no such distinction.
-- Lab 1, step 1 links straight to the template repository instead of naming it.
 - Lab 1, step 5 says what the RStudio *Packages* pane button actually does, and points
   at challenge 1 for the Python equivalent. The core of lab 1 stays in R.
 - Lab 1, challenge 1 opens VS Code before anything else: File → Open Folder on
@@ -97,9 +90,9 @@ If you downloaded material before one of the dates below, check what has changed
   numbers were chosen so the double count is visible without arithmetic. What is left to
   the student is doing the same for one of the other four scripts. Every code line in
   the file carries a comment saying what it does.
-- Lab 3, challenge 3 explains what a reprex is made of, shows how to build a
-  three-row table by hand in each language, and works a complete example through on a
-  different bug. The script 5 reprex is still theirs to write.
+- Lab 3, challenge 3 also explains what a reprex is made of, and shows how to build a
+  three-row table by hand in each language before working a complete example through on
+  a different bug.
 - Lab 2, step 7 ends by saying the figure is ugly, and why that is deliberate today:
   a good-looking chart of a doubled total is worse than an ugly one of a correct total.
   Making figures readable and persuasive is named as the subject of *Data analytics and
