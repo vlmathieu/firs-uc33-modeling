@@ -79,9 +79,26 @@ Diagnose the common cause, fix both, then answer: which of the two behaviours do
 prefer, and why?
 
 **Second problem, in R only.** Once the type error is fixed, look at the country names
-and at the `qtyUnitAbbr` column. You will see `m\xb3` and unreadable strings. Try to
-find "Côte d'Ivoire" with a `grepl()`: you will find **nothing**, even though the
-substring `voire` is right there. Explain why, then fix it. Nothing crashes at any
+and at the `qtyUnitAbbr` column.
+
+**Run these lines in the console**, not in the script — you are investigating, not
+producing a result yet.
+
+```r
+unique(trade$qtyUnitAbbr)          # "m\xb3", not "m³"
+
+# look for Côte d'Ivoire, which is definitely in the file
+sum(grepl("voire", trade$partnerDesc))               # 0, plus a warning
+nrow(subset(trade, partnerDesc == "Côte d'Ivoire"))  # 0, and no warning at all
+```
+
+Zero matches, on a substring that is right there in the file. The `grepl()` at least
+warns you, and the warning hands you the answer:
+`unable to translate 'C<f4>te d'Ivoire' to a wide string`. The `subset()` returns an
+empty table and says nothing at all — the same silent failure as script 5, in a
+different disguise.
+
+Explain why, then fix it, then run the same three lines again. Nothing crashes at any
 point.
 
 ### 5. `05_silent` — the most important of the five

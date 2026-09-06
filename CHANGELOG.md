@@ -21,6 +21,10 @@ If you downloaded material before one of the dates below, check what has changed
 - Lab 2, step 7 asks for a stacked bar chart and recommends `ggplot2` in R, with the
   aggregation written out and a link to the one-page cheatsheet. The published R
   solution uses `ggplot2` as well, for consistency.
+- Lab 3, script 4: the encoding investigation is written out. Three console lines show
+  the unreadable unit, a `grepl()` that finds nothing while warning, and a `subset()`
+  that finds nothing and says nothing. The instruction to work in the console rather
+  than the script is now explicit.
 - Lab 1, step 5 installs `ggplot2` alongside `here`, so that lab 2 does not stall on a
   package download.
 - The project template now ships `src/02_cleaning.R` and `.py`: header, dependencies and
