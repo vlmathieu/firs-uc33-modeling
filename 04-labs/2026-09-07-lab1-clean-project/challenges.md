@@ -224,10 +224,16 @@ ROOT = Path(__file__).resolve().parents[1]   # in a script
 
 params = yaml.safe_load(open(ROOT / "config" / "config.yml"))
 
-params                       # a dict
-params["input_file"]         # 'data/raw/comtrade_fr_roundwood_clean.csv'
-params["country"]            # 'France'
+print(params)                       # a dict
+print(params["input_file"])         # data/raw/comtrade_fr_roundwood_clean.csv
+print(params["country"])            # France
 ```
+
+**The `print()` calls are not optional here.** In the console, typing a name displays
+its value; in a script, Python evaluates it and says nothing. Run those three lines
+without `print()` through `python src/01_import.py` and you get a silent script that
+looks like it did nothing. R behaves differently — a bare name at the top level of a
+script is printed — which is one more reason not to assume the two languages agree.
 
 A YAML file becomes a **named list** in R and a **dict** in Python. You reach into it
 the same way you would reach into anything else, and there is no third concept to learn.

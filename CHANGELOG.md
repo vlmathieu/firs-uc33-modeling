@@ -66,6 +66,10 @@ If you downloaded material before one of the dates below, check what has changed
   do if it fails.
 - The challenges that need a package now give the install line: `pyyaml` in lab 1
   challenge 3, `pyarrow` in lab 2 challenge 5, both as `python -m pip install`.
+- Lab 1, challenge 3 wraps its three Python lookups in `print()`. A bare name displays
+  its value in the console and displays nothing in a script, where these lines end up —
+  and R, which prints a top-level name either way, gives no warning that Python will
+  not.
 - Lab 1, challenge 3 no longer asks students to create `config/config.yml`, which the
   template already ships. It shows the real file, gives the console lines that read it
   in R and in Python, and ends on a test: change the country in the YAML and re-run
