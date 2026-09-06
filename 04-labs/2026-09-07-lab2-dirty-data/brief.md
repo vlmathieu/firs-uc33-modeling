@@ -84,8 +84,13 @@ trade <- read.csv("data/raw/comtrade_fr_roundwood_dirty.csv")
 ```
 
 ```python
+import pandas as pd
 trade = pd.read_csv("data/raw/comtrade_fr_roundwood_dirty.csv")
 ```
+
+If that `import` answers `ModuleNotFoundError: No module named 'pandas'`, the package is
+not installed on this machine. `python -m pip install pandas`, **in the terminal**, then
+a new Python session — lab 1, step 5.
 
 **Both fail.** You do not get a wonky table: you get an error, and it is not the same
 one in the two languages.

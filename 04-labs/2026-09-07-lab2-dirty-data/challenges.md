@@ -238,7 +238,8 @@ a dangerous move on raw data.
 Save your cleaned table as **Parquet**, then compare.
 
 ```r
-install.packages("arrow")
+# R
+install.packages("arrow")   # from inside R
 library(arrow)
 
 write_parquet(clean, here("data", "processed", "trade_clean.parquet"))
@@ -250,8 +251,14 @@ back <- read_parquet(here("data", "processed", "trade_clean.parquet"))
 str(back)      # compare the column types with what a CSV gives you back
 ```
 
+For Python the package is called `pyarrow`, and it installs from the terminal:
+
+```
+python -m pip install pyarrow
+```
+
 ```python
-# needs pyarrow:  pip install pyarrow
+# Python
 clean.to_parquet(ROOT / "data" / "processed" / "trade_clean.parquet")
 
 (ROOT / "data" / "processed" / "trade_clean.csv").stat().st_size

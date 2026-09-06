@@ -8,6 +8,13 @@ If you downloaded material before one of the dates below, check what has changed
 
 ## 2026-09-05
 
+### Fixed
+
+- The installation guide never asked for **pandas**, without which no Python exercise
+  of 7 September runs. New section (d): `python -m pip install pandas`, plus `pyyaml`
+  and `pyarrow` for the challenges, why `python -m pip` rather than `pip`, and a fourth
+  line in the verification block. Sections (d) to (g) shift to (e) to (h).
+
 ### Changed
 
 - Afternoon labs of 7 September moved to their final times: lab 1 at 13:50, lab 2 at
@@ -25,6 +32,29 @@ If you downloaded material before one of the dates below, check what has changed
   the unreadable unit, a `grepl()` that finds nothing while warning, and a `subset()`
   that finds nothing and says nothing. The instruction to work in the console rather
   than the script is now explicit.
+- Lab 1, step 1 links straight to the template repository instead of naming it.
+- Lab 1, challenge 1 documents the two errors that stop every VS Code user before the
+  exercise starts: `ModuleNotFoundError: No module named 'pandas'`, and
+  `NameError: name '__file__' is not defined` when the line is sent to the console with
+  `Shift+Enter`. `__file__` in a script, `Path.cwd()` in the console, and the reason R
+  needs no such distinction.
+- Lab 1, step 1 links straight to the template repository instead of naming it.
+- Lab 1, step 5 now installs a package in **both** languages. R installs from inside R,
+  with a note on what the *Packages* pane button actually does; Python installs
+  `pandas` from the terminal with `python -m pip`, with the `py -m pip` fallback for
+  Windows and the reason bare `pip` can succeed and still leave the module missing. A
+  table sets install (once per machine) against load (every session), which is the
+  distinction lab 3's script 2 turns on.
+- Lab 1, challenge 1 documents the two errors that stop every VS Code user before the
+  exercise starts: `ModuleNotFoundError: No module named 'pandas'`, with the two
+  `sys.executable` calls that identify a two-Python machine, and
+  `NameError: name '__file__' is not defined` when the line is sent to the console with
+  `Shift+Enter`. `__file__` in a script, `Path.cwd()` in the console, and the reason R
+  needs no such distinction.
+- Lab 2, step 2 shows the `import pandas as pd` it had left implicit, and says what to
+  do if it fails.
+- The challenges that need a package now give the install line: `pyyaml` in lab 1
+  challenge 3, `pyarrow` in lab 2 challenge 5, both as `python -m pip install`.
 - Lab 1, challenge 3 no longer asks students to create `config/config.yml`, which the
   template already ships. It shows the real file, gives the console lines that read it
   in R and in Python, and ends on a test: change the country in the YAML and re-run

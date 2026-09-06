@@ -8,10 +8,100 @@ Redo step 4 in Python, in `src/01_import.py`, using `pathlib`:
 
 ```python
 from pathlib import Path
-ROOT = Path(__file__).parent.parent
+ROOT = Path(__file__).resolve().parents[1]     # the project root
 ```
 
+Two things will stop you before you get there. Both are worth more than the exercise
+itself.
+
+### `ModuleNotFoundError: No module named 'pandas'`
+
+```
+>>> import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+```
+
+pandas is not part of Python. It is a package, and nothing has installed it yet — the
+prerequisites installed the *language*, not the libraries. Step 5 of the brief has the
+command; here it is again, **in the terminal**, not at the `>>>` prompt:
+
+```
+python -m pip install pandas
+```
+
+```
+py -m pip install pandas
+```
+
+The second form is the Windows fallback, for when `python` is not recognised.
+
+Then **start a new Python session**: a package installed while a session is open is not
+visible to that session.
+
+If it still says the module is missing after an install that said it succeeded, you have
+two Pythons and you installed into the wrong one. Ask them who they are:
+
+```python
+import sys
+sys.executable      # the interpreter this session is running
+```
+
+```
+python -c "import sys; print(sys.executable)"
+```
+
+Run both. If the two paths differ, that is your answer. Fix it in VS Code with
+`Ctrl+Shift+P` → **Python: Select Interpreter**, pick the one you installed into, then
+close the terminal and open a new one.
+
+### `NameError: name '__file__' is not defined`
+
+```
+>>> ROOT = Path(__file__).resolve().parents[1]
+NameError: name '__file__' is not defined. Did you mean: '__name__'?
+```
+
+This one is not a mistake, it is a fact about where you typed the line.
+
+`__file__` is the path of **the file Python is currently executing**. Send a line to
+the console with `Shift+Enter` and Python is not executing a file — it is executing
+you, one line at a time. There is no file, so there is no `__file__`, and there is
+nothing to take the parent of.
+
+So: the same line belongs in two different forms depending on where it runs.
+
+| Where | What locates the project root |
+|---|---|
+| In a **script**, run as a script | `ROOT = Path(__file__).resolve().parents[1]` |
+| In the **console** | `ROOT = Path.cwd()` — provided you opened the *folder* `uc33-lab1` in VS Code, which is what makes the terminal start at the project root |
+
+Check it before you trust it:
+
+```python
+from pathlib import Path
+ROOT = Path.cwd()
+ROOT                                    # must end in uc33-lab1
+(ROOT / "data" / "raw").exists()        # must be True
+```
+
+Then run the finished script properly, from the project root:
+
+```
+python src/01_import.py
+```
+
+That is when `__file__` exists, and that is the version that has to work — your partner
+will run the script, not your console.
+
+### Then compare
+
 Compare with the R solution. What is more explicit in each of the two?
+
+One thing to notice while you do. In R, `here()` gives the same answer in the console
+and in the script, because the `.Rproj` fixed the working directory for both. In
+Python nothing fixed anything for you: the script finds itself from `__file__`, the
+console has to be told. That is the same lesson as step 3, seen from the side where
+it is not done for you.
 
 ## 2. Break the project on purpose
 
@@ -39,7 +129,7 @@ you get back.
 
 ```r
 # R
-install.packages("yaml")   # once, on the machine
+install.packages("yaml")   # once on the machine, from inside R
 library(yaml)
 library(here)
 
@@ -50,9 +140,14 @@ params$input_file        # "data/raw/comtrade_fr_roundwood_clean.csv"
 params$country           # "France"
 ```
 
+For Python the package is called `pyyaml`, and it installs from the terminal:
+
+```
+python -m pip install pyyaml
+```
+
 ```python
 # Python
-# needs pyyaml:  pip install pyyaml
 import yaml
 from pathlib import Path
 
