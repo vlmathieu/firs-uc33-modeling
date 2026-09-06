@@ -25,6 +25,10 @@ If you downloaded material before one of the dates below, check what has changed
   the unreadable unit, a `grepl()` that finds nothing while warning, and a `subset()`
   that finds nothing and says nothing. The instruction to work in the console rather
   than the script is now explicit.
+- Lab 1, challenge 3 no longer asks students to create `config/config.yml`, which the
+  template already ships. It shows the real file, gives the console lines that read it
+  in R and in Python, and ends on a test: change the country in the YAML and re-run
+  without opening a script.
 - Lab 3, challenge 2 gives the guard rail in Python as well as R, both labelled, and
   asks students to run it on the broken script so they see it fail. Two worked
   assertions on the file itself replace the bare instruction to "write three".
