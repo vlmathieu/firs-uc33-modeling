@@ -25,6 +25,14 @@ If you downloaded material before one of the dates below, check what has changed
   the unreadable unit, a `grepl()` that finds nothing while warning, and a `subset()`
   that finds nothing and says nothing. The instruction to work in the console rather
   than the script is now explicit.
+- Lab 3, challenge 2 gives the guard rail in Python as well as R, both labelled, and
+  asks students to run it on the broken script so they see it fail. Two worked
+  assertions on the file itself replace the bare instruction to "write three".
+- Lab 3, challenge 3 explains what a reprex is made of, shows how to build a
+  three-row table by hand in each language, and works a complete example through on a
+  different bug. The script 5 reprex is still theirs to write.
+- Lab 3, script 5 solutions now assert on `partnerISO` rather than on the `World`
+  label, in line with what the lab teaches about codes and labels.
 - Lab 1, step 5 installs `ggplot2` alongside `here`, so that lab 2 does not stall on a
   package download.
 - The project template now ships `src/02_cleaning.R` and `.py`: header, dependencies and
