@@ -202,71 +202,182 @@ Each one gets a comment saying **why**, not what. `# filter World` is worthless.
 exercise.
 
 **a) The `World` aggregate.** It is the total of all partners, sitting in the table
-alongside the partners it is the total of.
+alongside the partners it is the total of. Two lines do the job, and they are not
+equally good.
 
 ```r
-clean <- subset(trade, partnerISO != "W00")
+# R
+sum(trade$partnerISO == "W00")                      # count them first: 18 rows
+
+clean <- subset(trade, partnerISO != "W00")         # OPTION 1: filter on the code
+# clean <- subset(trade, partnerDesc != "World")    # OPTION 2: filter on the label
 ```
+
 ```python
-clean = trade[trade.partnerISO != "W00"].copy()
+# Python
+(trade.partnerISO == "W00").sum()                          # count them first: 18 rows
+
+clean = trade[trade.partnerISO != "W00"].copy()             # OPTION 1: on the code
+# clean = trade[trade.partnerDesc != "World"].copy()        # OPTION 2: on the label
 ```
+
+**Take option 1.** Both work on this file today. But a label gets translated, renamed,
+abbreviated and capitalised differently; a reserved code does not. The day the export
+comes back with `Monde` in it, option 2 silently keeps the aggregate and doubles your
+totals.
 
 In Python, `.copy()` is not decoration: without it pandas warns you later that you are
 modifying a view of another table rather than a table of your own.
 
 **b) The rows with `qty = 0`.** Seventeen of them. They are real flows with an
 unreported quantity — but any division by that zero gives infinity, which then travels
-through a mean without a sound. Decide: drop the rows, or keep them and exclude the zero
-only where you divide? Whichever you choose, write down why.
+through a mean without a sound. Decide: drop the rows, or keep them and neutralise the
+zero only where you divide?
 
 ```r
-sum(trade$qty == 0)                          # count them first
-clean <- subset(clean, qty > 0)              # if you decide to drop them
+# R
+sum(trade$qty == 0)                                  # count them first: 17 rows
+
+clean <- subset(clean, qty > 0)                      # OPTION 1: drop the rows
+
+# OPTION 2: keep the rows, and make the zero unusable at the point of division only
+volume <- ifelse(clean$qty > 0, clean$qty, NA)       # zero becomes NA, so x/volume is NA
+clean$density <- clean$netWgt / volume               # ... not Inf
 ```
+
 ```python
-(trade.qty == 0).sum()
-clean = clean[clean.qty > 0]
+# Python
+(trade.qty == 0).sum()                               # count them first: 17 rows
+
+clean = clean[clean.qty > 0]                         # OPTION 1: drop the rows
+
+# OPTION 2: keep the rows, neutralise the zero where you divide
+volume = clean.qty.where(clean.qty > 0)              # zero becomes NaN
+clean["density"] = clean.netWgt / volume             # ... so the result is NaN, not inf
 ```
+
+Option 1 is one line and loses seventeen real flows from every count you make later.
+Option 2 keeps them and costs you a line of vigilance at every division. Neither is
+wrong. Choose, and write the reason down.
 
 **c) The missing net weights.** Eleven rows. Same question, same rule: a decision, and a
 reason.
 
 ```r
-sum(is.na(trade$netWgt))
+# R
+sum(is.na(trade$netWgt))                             # count them first: 11 rows
+
+clean <- subset(clean, !is.na(netWgt))               # OPTION 1: drop the rows
+
+# OPTION 2: keep them, and exclude the gap where you compute
+mean(clean$netWgt, na.rm = TRUE)                     # na.rm = TRUE, or the answer is NA
 ```
+
 ```python
-trade.netWgt.isna().sum()
+# Python
+trade.netWgt.isna().sum()                            # count them first: 11 rows
+
+clean = clean[clean.netWgt.notna()]                  # OPTION 1: drop the rows
+
+# OPTION 2: keep them, and exclude the gap where you compute
+clean.netWgt.mean()                                  # pandas skips the NaN silently
 ```
+
+Look hard at those last two lines, because the two languages behave in opposite ways.
+`mean(c(1, NA, 3))` returns **`NA`** in R: it refuses, and you must say `na.rm = TRUE`
+to get an answer. The same thing in pandas returns **2.0**: it drops the missing value
+and tells you nothing. One of the two makes you decide. The other decides for you.
 
 **d) Columns that contribute nothing.** You found one at step 4 — `aggrLevel` holds the
 same value on all 674 rows. A constant column allows no filter, no grouping and no
 statistic, and left in place it invites a `group_by` that groups nothing.
 
 ```r
-clean$aggrLevel <- NULL
-```
-```python
-clean = clean.drop(columns=["aggrLevel"])
+# R
+length(unique(trade$aggrLevel))                      # 1 -- check before you delete
+clean$aggrLevel <- NULL                              # drop it
 ```
 
-**e) `period` as a number.** It comes in as text. Convert it explicitly rather than
-hoping.
+```python
+# Python
+trade.aggrLevel.nunique()                            # 1 -- check before you delete
+clean = clean.drop(columns=["aggrLevel"])            # drop it
+```
+
+There is no second option here, and that is worth noticing: a decision only deserves the
+name when the alternative is defensible. Keeping a constant column is not.
+
+**e) The column types.** Before you trust a single number in this table, ask what type
+each column actually came in as. This is the decision nobody thinks is a decision, and
+it is the one that produces wrong answers rather than errors.
 
 ```r
-clean$period <- as.integer(clean$period)
+# R
+str(trade)                                           # type of every column, in one line each
+class(trade$primaryValue)                            # must be "numeric"
+```
+
+```python
+# Python
+trade.info()                                         # type of every column
+trade.primaryValue.dtype                             # must be float64
+```
+
+Three columns are at risk here — `qty`, `netWgt` and `primaryValue` — because their
+decimal mark is a comma. Declared at step 3, they arrive as numbers. Not declared, they
+arrive as **text**, and nothing tells you: R says `character`, pandas says `object`, and
+both go on happily until something tries to add them up.
+
+If any of the three is text, do not convert it here. **Go back to step 3 and declare
+`dec` / `decimal` properly**, because a column read wrongly and patched afterwards is a
+column you will have to remember about forever.
+
+If a column genuinely holds the right values in the wrong type, converting is one line:
+
+```r
+# R
+clean$period <- as.integer(clean$period)             # text -> whole number
 ```
 ```python
-clean["period"] = clean.period.astype(int)
+# Python
+clean["period"] = clean.period.astype(int)           # text -> whole number
 ```
+
+On this file `period` already arrives as an integer in both languages — check it and
+move on. Keep the line in mind rather than in your script: you will need it in March, on
+a file where the years came in quoted.
+
+Why it matters that a year be a number and not text: text sorts as text. `"2024" < "9"`
+is **TRUE** in R, and a filter written on a year that is secretly a string will one day
+return nothing at all, without complaining.
 
 Then write the result out:
 
 ```r
-write.csv(clean, here("data", "processed", "trade_clean.csv"), row.names = FALSE)
+# R
+write.csv(clean, here("data", "processed", "trade_clean.csv"),
+          row.names = FALSE)     # do not add a column of row numbers
 ```
+
 ```python
-clean.to_csv(ROOT / "data" / "processed" / "trade_clean.csv", index=False)
+# Python
+clean.to_csv(ROOT / "data" / "processed" / "trade_clean.csv",
+             index=False)        # do not add a column of row numbers
 ```
+
+**What those two arguments do, and why they are not optional.** Both languages carry a
+row label alongside the data — `1, 2, 3…` in R, `0, 1, 2…` in pandas — and both write it
+out as an extra, unnamed first column unless you say no:
+
+```
+"","period","cmdCode"        <- R, without row.names = FALSE
+,period,cmdCode              <- pandas, without index=False
+```
+
+Read that file back and the phantom column arrives as `X` in R and `Unnamed: 0` in
+pandas. Do it twice and you get a second one. It is the most common way a clean CSV
+quietly gains junk on every round trip — and you will see the result in someone's data
+before Christmas.
 
 The toolbox, in one table:
 

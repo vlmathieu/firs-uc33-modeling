@@ -15,6 +15,15 @@ If you downloaded material before one of the dates below, check what has changed
   and `pyarrow` for the challenges, why `python -m pip` rather than `pip`, and a fourth
   line in the verification block. Sections (d) to (g) shift to (e) to (h).
 
+### Fixed
+
+- Lab 2, step 6 claimed `period` was read as text and had students convert it. It is not:
+  on this file `period` arrives as an integer in both languages. The columns actually at
+  risk are `qty`, `netWgt` and `primaryValue`, whose decimal mark is a comma. Point (e)
+  now asks for the type check that finds them, and sends anyone holding a text column
+  back to step 3 rather than patching it. The two solution scripts assert the types
+  instead of converting.
+
 ### Changed
 
 - Afternoon labs of 7 September moved to their final times: lab 1 at 13:50, lab 2 at
@@ -35,6 +44,12 @@ If you downloaded material before one of the dates below, check what has changed
 - Lab 1, step 1 links straight to the template repository instead of naming it, and its
   layout listing shows the six scripts the template now ships.
 - Lab 2, step 1 links straight to the data file.
+- Lab 2, step 6 gives a runnable line for every option of every decision, not only for
+  the ones with a single answer: both ways of filtering the aggregate, dropping the
+  zero-quantity rows against neutralising them at the division, dropping the missing
+  weights against excluding them at the computation. Point (c) had no code at all. Every
+  block is labelled `# R` or `# Python`, and `row.names = FALSE` / `index=False` are
+  explained — including what the phantom column is called when it comes back.
 - Lab 2, step 7 moves into its own script. The template ships `src/03_figure.R` / `.py`
   complete, and the exercise becomes running it a block at a time rather than typing
   twenty lines of aggregation in five minutes. The brief explains why a third script:
