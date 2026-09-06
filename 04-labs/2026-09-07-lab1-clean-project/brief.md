@@ -33,8 +33,10 @@ uc33-lab1/
 ├── src/
 │   ├── 01_import.R
 │   ├── 01_import.py
-│   ├── 02_cleaning.R     <- lab 2. Leave it alone for now.
-│   └── 02_cleaning.py
+│   ├── 02_cleaning.R     <- lab 2. Leave them alone for now.
+│   ├── 02_cleaning.py
+│   ├── 03_figure.R
+│   └── 03_figure.py
 ├── output/
 │   ├── figures/
 │   └── tables/

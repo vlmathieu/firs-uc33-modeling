@@ -32,7 +32,15 @@ If you downloaded material before one of the dates below, check what has changed
   the unreadable unit, a `grepl()` that finds nothing while warning, and a `subset()`
   that finds nothing and says nothing. The instruction to work in the console rather
   than the script is now explicit.
-- Lab 1, step 1 links straight to the template repository instead of naming it.
+- Lab 1, step 1 links straight to the template repository instead of naming it, and its
+  layout listing shows the six scripts the template now ships.
+- Lab 2, step 1 links straight to the data file.
+- Lab 2, step 7 moves into its own script. The template ships `src/03_figure.R` / `.py`
+  complete, and the exercise becomes running it a block at a time rather than typing
+  twenty lines of aggregation in five minutes. The brief explains why a third script:
+  each stage reads a file and writes a file, so one can be re-run, handed over or broken
+  on its own. `matplotlib` is named as a separate install, and the `plt` import is shown
+  where it belongs.
 - Lab 1, challenge 1 documents the two errors that stop every VS Code user before the
   exercise starts: `ModuleNotFoundError: No module named 'pandas'`, and
   `NameError: name '__file__' is not defined` when the line is sent to the console with

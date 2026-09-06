@@ -26,13 +26,14 @@ Two places, and the difference between them is the point of the lab.
 **Steps 1 to 5 go in the console.** You are exploring — you look, you print, you throw
 away. Nothing you type there is meant to survive.
 
-**Step 6 goes in a script**: `src/02_cleaning.R` or `src/02_cleaning.py`. It is already
-in the project you built in lab 1 — the template ships it, with its header and a loading
-line. From there on you are no longer exploring, you are recording decisions. A decision
-that exists only in a console is a decision nobody can check in six months — including
-you.
+**Steps 6 and 7 go in scripts.** Step 6 is `src/02_cleaning.R` or `src/02_cleaning.py`,
+step 7 is `src/03_figure.R` or `src/03_figure.py`. Both are already in the project you
+built in lab 1 — the template ships them. From there on you are no longer exploring, you
+are recording decisions. A decision that exists only in a console is a decision nobody
+can check in six months — including you.
 
-The `02_` prefix is this morning's rule: it says this script runs after `01_import`.
+The `01_`, `02_`, `03_` prefixes are this morning's rule doing real work: they are the
+order the scripts run in, written where you cannot lose it.
 
 ### Finding the console
 
@@ -51,7 +52,9 @@ want instead of hunting through menus.
 
 ### 1. Look before loading (5 min)
 
-Download `comtrade_fr_roundwood_dirty.csv` into `data/raw/`.
+Download [`comtrade_fr_roundwood_dirty.csv`](../../05-data/comtrade_fr_roundwood_dirty.csv)
+into `data/raw/`, next to the clean one. On the GitHub page, the download button is at
+the top right of the file view.
 
 **Do not open it in Excel.** Look at its first lines from the terminal:
 
@@ -281,48 +284,64 @@ undocumented decisions. Only one of the two is defensible in six months.
 
 ### 7. A figure (5 min)
 
-Produce, in `output/figures/`, a **stacked bar chart**: one bar per year, 2022 to 2024,
-each bar split by destination country, height in millions of dollars. French oak log
-exports only (`cmdCode == 440391`).
+**This one is written for you.** Open `src/03_figure.R` or `src/03_figure.py` — the
+template ships it, filled in. Your job is not to type it: it is to **run it one block at
+a time and work out what each block does.**
 
-Why that chart and not a line chart: you have three years. Three points make a poor line,
-and six lines on three points make a poor figure. A stacked bar shows the total *and* its
-composition at the same time, which is what the question actually asks.
+`Ctrl+Enter` in RStudio, `Shift+Enter` in VS Code. Send the first block, look at what
+appeared. Send the second, look again. Do not run the whole file until you can say what
+each of the three parts produced.
 
-Keep the top five destinations and gather everything else into `Other` — otherwise you
-get sixty legend entries and no readable figure.
+#### Why a third script, and not more of `02_cleaning`
 
-**In R, use `ggplot2`.** It is the reason many people learn R at all, and it is worth
-your first contact today.
+You now have three scripts, and each does one job:
+
+| | Reads | Writes |
+|---|---|---|
+| `01_import.R` | `data/raw/…clean.csv` | `data/processed/trade_france.csv` |
+| `02_cleaning.R` | `data/raw/…dirty.csv` | `data/processed/trade_clean.csv` |
+| `03_figure.R` | `data/processed/trade_clean.csv` | `output/figures/oak_destinations.png` |
+
+That is a **pipeline**, and it is worth naming, because it is how every project you
+build this year will be organised.
+
+Each script starts from a file on disk, not from something left in memory by the
+previous one. That has three consequences you will feel within a month:
+
+- **You can re-run one stage without re-running the others.** Changing a colour in the
+  figure does not mean re-reading and re-cleaning 674 rows.
+- **You can hand one stage to someone else.** Your partner can rewrite `03_figure`
+  without ever opening your cleaning code.
+- **A stage that breaks tells you where.** One script, one job, one place to look.
+
+The numeric prefixes say the order. That is this morning's naming rule doing real work:
+`01`, `02`, `03` is a run order that survives you forgetting it.
+
+#### What the figure shows
+
+A **stacked bar chart**: one bar per year, 2022 to 2024, each bar split by destination
+country, height in millions of dollars. French oak log exports only
+(`cmdCode == 440391`).
+
+Why that chart and not a line chart: you have three years. Three points make a poor
+line, and six lines on three points make a poor figure. A stacked bar shows the total
+*and* its composition at the same time, which is what the question actually asks.
+
+The top five destinations are kept by name and everything else gathered into `Other` —
+otherwise you get sixty legend entries and no readable figure.
+
+#### R — `ggplot2`
+
+It is the reason many people learn R at all, and it is worth your first contact today.
+You installed it in lab 1, step 5; if you skipped that:
 
 ```r
 install.packages("ggplot2")   # once, on the machine
-library(ggplot2)              # every session
 ```
 
-Three steps: filter, aggregate, plot.
+The plotting block of `03_figure.R` is this:
 
 ```r
-# 1. Filter: French oak log exports
-oak <- subset(clean, cmdCode == 440391 &
-                     reporterDesc == "France" &
-                     flowDesc == "Export")
-
-# 2. Aggregate. Read the formula as: sum primaryValue, for each
-#    combination of period and partnerDesc.
-by_country <- aggregate(primaryValue ~ period + partnerDesc, data = oak, FUN = sum)
-
-#    The five biggest destinations over the whole period
-totals <- aggregate(primaryValue ~ partnerDesc, data = by_country, FUN = sum)
-totals <- totals[order(-totals$primaryValue), ]
-top5   <- head(totals$partnerDesc, 5)
-
-#    Everything else becomes "Other", then re-aggregate so the Others add up
-by_country$destination <- ifelse(by_country$partnerDesc %in% top5,
-                                 by_country$partnerDesc, "Other")
-graph <- aggregate(primaryValue ~ period + destination, data = by_country, FUN = sum)
-
-# 3. Plot
 ggplot(graph, aes(x = factor(period), y = primaryValue / 1e6, fill = destination)) +
   geom_col() +
   labs(title = "French oak log exports (HS 440391)",
@@ -332,34 +351,53 @@ ggsave(here("output", "figures", "oak_destinations.png"),
        width = 9, height = 5, dpi = 150)
 ```
 
-How to read that `ggplot()` call, because it is a grammar rather than a function:
-**`aes()` maps columns onto visual properties** — `period` onto the x axis, value onto
-the height, `destination` onto the fill colour. **`geom_col()` says draw those as bars.**
-**`labs()` names things.** You add layers with `+`, and each one does one job.
+Read it as a grammar rather than a function. **`aes()` maps columns onto visual
+properties** — `period` onto the x axis, value onto the height, `destination` onto the
+fill colour. **`geom_col()` says draw those as bars.** **`labs()` names things.** Layers
+are added with `+`, and each one does one job.
 
 → [The ggplot2 cheatsheet](https://rstudio.github.io/cheatsheets/data-visualization.pdf)
 — one page, and the only ggplot2 documentation you need this year.
 
-**In Python**, pandas plots straight from a pivot table:
+#### Python — pandas and matplotlib
+
+pandas draws the chart, but the drawing itself is done by **matplotlib**, which is a
+separate package and is not installed with pandas. In the terminal:
+
+```
+python -m pip install matplotlib
+```
+
+Then the import goes at the top of the script, with the others — it is already there in
+`03_figure.py`:
 
 ```python
-oak = clean[(clean.cmdCode == 440391)
-            & (clean.reporterDesc == "France")
-            & (clean.flowDesc == "Export")]
+import matplotlib.pyplot as plt
+```
 
-by_country = oak.pivot_table(index="period", columns="partnerDesc",
-                             values="primaryValue", aggfunc="sum", fill_value=0)
+`plt` is to matplotlib what `pd` is to pandas: a conventional short name. If you forget
+it, the failure is the one you will meet again in lab 3, script 2:
+`NameError: name 'plt' is not defined`.
 
-top5  = by_country.sum().sort_values(ascending=False).index[:5]
-graph = by_country[list(top5)].copy()
-graph["Other"] = by_country.drop(columns=list(top5)).sum(axis=1)
+The plotting block is this:
 
-ax = (graph / 1e6).plot(kind="bar", stacked=True, figsize=(9, 5))
-ax.set_ylabel("million USD")
+```python
+ax = (graph / 1e6).plot(kind="bar", stacked=True, figsize=(9, 5), width=0.6)
 ax.set_title("French oak log exports (HS 440391)")
+ax.set_xlabel("")
+ax.set_ylabel("million USD")
+ax.legend(title="Destination", bbox_to_anchor=(1.02, 1), loc="upper left")
 plt.tight_layout()
 plt.savefig(ROOT / "output" / "figures" / "oak_destinations.png", dpi=150)
 ```
+
+#### Before you move on
+
+Open the PNG. Compare it with your partner's, who built it in the other language. Same
+data, same five destinations, two different libraries: the bars should have the same
+heights.
+
+If yours are twice as tall, you know exactly which line to re-read.
 
 ---
 
