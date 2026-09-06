@@ -70,6 +70,10 @@ If you downloaded material before one of the dates below, check what has changed
 - Lab 3, challenge 3 explains what a reprex is made of, shows how to build a
   three-row table by hand in each language, and works a complete example through on a
   different bug. The script 5 reprex is still theirs to write.
+- The lab 2 solution splits in two. `02_cleaning.R` / `.py` is now the brief and nothing
+  else — five decisions, two of which are a documented "keep". The density work, the
+  aberrant values and the figure move to `02_cleaning_challenges.R` / `.py`, which is
+  what they always were.
 - Lab 3, script 5 solutions now assert on `partnerISO` rather than on the `World`
   label, in line with what the lab teaches about codes and labels.
 - Lab 1, step 5 installs `ggplot2` alongside `here`, so that lab 2 does not stall on a
