@@ -286,29 +286,32 @@ nothing in the file says which.
 ### b) Generalise: this is a join
 
 A **join** lines up two tables on the columns they have in common. Here the two tables
-are the same file read from two ends, and the catch is that a column called
-`reporterDesc` does not mean the same thing on both sides — so it gets renamed before
-the join.
+are the same file read from two ends, and the catch is naming: `reporterDesc` means
+"France" on one side and "the partner" on the other, so a join on that column would be
+meaningless.
+
+Fix it by naming the columns after the **roles**, not after the file. In every row of
+this comparison France is the **exporter** and the other country is the **importer** —
+whichever of the two happened to file the declaration.
 
 ```r
 # R
 exports <- subset(clean,
-                  reporterDesc == "France" & flowDesc == "Export",      # France's view
+                  reporterDesc == "France" & flowDesc == "Export",      # France's own account
                   select = c(period, cmdCode, partnerDesc, primaryValue))
+names(exports)[names(exports) == "partnerDesc"]  <- "importer"          # the buyer
+names(exports)[names(exports) == "primaryValue"] <- "value_exporter"    # what FRANCE says
 
 mirror  <- subset(clean,
-                  partnerDesc == "France" & flowDesc == "Import",       # the partners' view
+                  partnerDesc == "France" & flowDesc == "Import",       # the partners' account
                   select = c(period, cmdCode, reporterDesc, primaryValue))
+names(mirror)[names(mirror) == "reporterDesc"]  <- "importer"           # same buyer, other side
+names(mirror)[names(mirror) == "primaryValue"]  <- "value_importer"     # what THEY say
 
-# In the mirror table the REPORTER is France's partner. Rename it, or the join
-# has nothing to match on.
-names(mirror)[names(mirror) == "reporterDesc"] <- "partnerDesc"
+comp <- merge(exports, mirror,                             # line the two accounts up
+              by = c("period", "cmdCode", "importer"))     # same year, product, buyer
 
-comp <- merge(exports, mirror,                                    # line the two up
-              by = c("period", "cmdCode", "partnerDesc"),         # on these three columns
-              suffixes = c("_france", "_partner"))                # name the two value columns
-
-comp$ratio <- comp$primaryValue_partner / comp$primaryValue_france  # >1: the partner says more
+comp$ratio <- comp$value_importer / comp$value_exporter    # >1: the buyer declares more
 
 nrow(comp)                                          # 128 pairs comparable
 median(comp$ratio)                                  # 1.15
@@ -317,25 +320,32 @@ head(comp[order(-comp$ratio), ], 10)                # the worst disagreements fi
 
 ```python
 # Python
-exports = clean[(clean.reporterDesc == "France")                  # France's view
-                & (clean.flowDesc == "Export")][
-    ["period", "cmdCode", "partnerDesc", "primaryValue"]]
+exports = (clean[(clean.reporterDesc == "France")                 # France's own account
+                 & (clean.flowDesc == "Export")]
+           [["period", "cmdCode", "partnerDesc", "primaryValue"]]
+           .rename(columns={"partnerDesc": "importer",            # the buyer
+                            "primaryValue": "value_exporter"}))   # what FRANCE says
 
-mirror = (clean[(clean.partnerDesc == "France")                   # the partners' view
+mirror = (clean[(clean.partnerDesc == "France")                   # the partners' account
                 & (clean.flowDesc == "Import")]
           [["period", "cmdCode", "reporterDesc", "primaryValue"]]
-          .rename(columns={"reporterDesc": "partnerDesc"}))       # same rename, same reason
+          .rename(columns={"reporterDesc": "importer",            # same buyer, other side
+                           "primaryValue": "value_importer"}))    # what THEY say
 
-comp = exports.merge(mirror,                                      # line the two up
-                     on=["period", "cmdCode", "partnerDesc"],     # on these three columns
-                     suffixes=("_france", "_partner"))            # name the two value columns
+comp = exports.merge(mirror,                                      # line the two accounts up
+                     on=["period", "cmdCode", "importer"])        # same year, product, buyer
 
-comp["ratio"] = comp.primaryValue_partner / comp.primaryValue_france  # >1: partner says more
+comp["ratio"] = comp.value_importer / comp.value_exporter         # >1: the buyer declares more
 
 len(comp)                                           # 128 pairs comparable
 comp.ratio.median()                                 # 1.15
 comp.sort_values("ratio", ascending=False).head(10) # the worst disagreements first
 ```
+
+Naming the columns `value_exporter` and `value_importer` rather than `primaryValue_x`
+and `primaryValue_y` is not tidiness. Three weeks from now, `ratio > 1` means nothing
+and *the importer declares more than the exporter* means everything — and the second one
+is readable straight off the column names, by someone who never saw this code.
 
 Note what `merge` silently does: it keeps only the rows present on **both** sides. A
 flow one country reported and the other did not has no mirror, and disappears from the
