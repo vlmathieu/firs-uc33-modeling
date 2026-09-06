@@ -11,10 +11,45 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]     # the project root
 ```
 
-Two things will stop you before you get there. Both are worth more than the exercise
-itself.
+You have been in RStudio all afternoon. This one happens in VS Code, and getting into
+it correctly is the first half of the challenge.
 
-### First: install pandas
+### First: open the project in VS Code
+
+1. **Open VS Code.**
+2. **File → Open Folder…** (`Ctrl+K Ctrl+O`), and select **`uc33-lab1`** — the folder
+   itself, not a file inside it. This is the same distinction as double-clicking the
+   `.Rproj` rather than the script: opening the folder is what tells VS Code where the
+   project starts.
+3. If it asks **"Do you trust the authors of the files in this folder?"**, say yes. It
+   is your own folder.
+4. **Check that it actually loaded.** The explorer on the left must show the whole tree
+   — `data/`, `src/`, `output/`, `config/`, `README.md` — under a heading reading
+   `UC33-LAB1`. If you see a single file and no tree, you opened a file. Go back to
+   step 2.
+5. **Open `src/01_import.py`** from the explorer. That is the file you are working on.
+6. **Open a terminal**: **Terminal → New Terminal**, or ``Ctrl+` ``.
+7. Check where that terminal starts:
+
+```
+pwd
+```
+
+It must print the path ending in `uc33-lab1`. If it prints your home folder instead,
+the folder is not open — and every relative path you write from here on will miss.
+
+That last check is the whole point of the sequence. In RStudio the `.Rproj` set the
+working directory for you. In VS Code, **opening the folder** is what does it, and
+nothing warns you when you have skipped it.
+
+> You may notice a `.Rproj.user/` folder in the explorer that RStudio never showed you.
+> It is RStudio's session state — open tabs, cursor positions, pane layout — and it is
+> not your work. VS Code shows hidden folders, RStudio does not. Leave it alone; it is
+> already in the project's `.gitignore`.
+
+Two more things will stop you. Both are worth more than the exercise itself.
+
+### Second: install pandas
 
 Python cannot read a table on its own. `pandas` is the package that does it, and nothing
 has installed it yet — the prerequisites installed the *language*, not the libraries.
@@ -87,7 +122,7 @@ Run both. Two different paths is the diagnosis. The fix is `Ctrl+Shift+P` →
 **Python: Select Interpreter**, pick the one you installed into, then close the terminal
 and open a new one.
 
-### Second: `NameError: name '__file__' is not defined`
+### Third: `NameError: name '__file__' is not defined`
 
 ```
 >>> ROOT = Path(__file__).resolve().parents[1]

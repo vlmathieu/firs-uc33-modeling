@@ -49,6 +49,12 @@ If you downloaded material before one of the dates below, check what has changed
 - Lab 1, step 1 links straight to the template repository instead of naming it.
 - Lab 1, step 5 says what the RStudio *Packages* pane button actually does, and points
   at challenge 1 for the Python equivalent. The core of lab 1 stays in R.
+- Lab 1, challenge 1 opens VS Code before anything else: File → Open Folder on
+  `uc33-lab1`, the trust prompt, the check that the tree actually loaded, opening
+  `src/01_import.py`, and a `pwd` in a fresh terminal to prove the working directory is
+  the project root. Opening the folder is VS Code's `.Rproj`, and nothing warns you when
+  you have skipped it. A note explains the `.Rproj.user/` folder that RStudio hides and
+  VS Code does not.
 - Lab 1, challenge 1 installs `pandas` before asking for anything: the terminal command
   with its Windows fallback, an install/load table against R's `install.packages()` and
   `library()`, the four things that go wrong — wrong prompt, bare `pip`, no restart,
