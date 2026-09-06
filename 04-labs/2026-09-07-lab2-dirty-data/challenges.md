@@ -452,3 +452,44 @@ subject of this lab. Parquet stores the types alongside the data, so `period` co
 as an integer without anyone declaring anything.
 
 Why, then, is CSV still the most widely used format in the world?
+
+### The answer
+
+Answer it with your partner first. Then read this.
+
+**Because everything reads it, without being asked.** A CSV opens in a text editor, in
+Excel, in R, in Python, in a terminal, on a machine from 2005 and on one you have never
+seen. Parquet needs a library: without `arrow` or `pyarrow` installed, the file you just
+wrote is unreadable bytes. A format that requires an installation is a format that loses
+an exchange.
+
+**Because it has no version.** There is no Parquet-1.0-versus-2.0 problem in a CSV,
+because there is nothing in it to version. The absence of a specification — the very
+thing that cost you twenty minutes at step 3 — is also why nothing about it can ever
+break.
+
+**Because a human can read it.** You looked at three lines of this file in the terminal
+before writing a single line of code, and you diagnosed the separator, the decimal mark
+and the quoting from that alone. Try that on a Parquet file. Being inspectable by eye is
+worth more than it sounds when something goes wrong at eleven at night.
+
+**Because it is append-only friendly.** A sensor can add a line to a CSV every second
+with no more machinery than an open file. Parquet is a columnar block format: adding one
+row means rewriting a file.
+
+**And, honestly: because the person who exports it does not pay for it.** Whoever
+clicked *Save as CSV* in a French-configured Excel had no problem at all. The cost lands
+on you, three weeks later, in another country, in another language. A format whose costs
+fall on somebody else spreads very well.
+
+That last point is the one to keep. The lesson of this lab is not "CSV bad, Parquet
+good" — it is **choose by which side of the exchange you are on**:
+
+| | Format | Why |
+|---|---|---|
+| `data/raw/` | Whatever you were given | You do not choose it, and you do not touch it |
+| Handing data to someone unknown | **CSV** | It will be readable by them, and in ten years |
+| `data/processed/`, your own pipeline | **Parquet** | You are the only reader, types are worth keeping, and the file is a third of the size |
+
+Which is exactly the split the project template already imposes on you. Now you know
+why the two folders are not the same thing.

@@ -95,6 +95,11 @@ If you downloaded material before one of the dates below, check what has changed
 - Lab 3, challenge 3 explains what a reprex is made of, shows how to build a
   three-row table by hand in each language, and works a complete example through on a
   different bug. The script 5 reprex is still theirs to write.
+- Lab 2, challenge 5 answers its own closing question. "Why is CSV still the most
+  widely used format in the world" was left hanging at the end of the last challenge of
+  the day, where nobody was going to come back to it. The answer ends on the point that
+  transfers: choose the format by which side of the exchange you are on, which is the
+  `raw/` versus `processed/` split the template already imposes.
 - Lab 2's challenges are rewritten. Every code block is labelled `# R` or `# Python`
   and every line carries a comment saying what it does — for these pages only, since
   the what is the lesson here. Challenge 1 says which script to extend, explains what
