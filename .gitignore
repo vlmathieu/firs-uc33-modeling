@@ -4,10 +4,6 @@ CLAUDE.md
 .cursor/
 .aider*
 
-# Lab solutions -- published AFTER each session.
-# Remove these two lines on the evening of the lab to make them visible.
-04-labs/**/solution/
-
 # Source data -- too large, and not redistributable as is
 *.parquet
 *.parquet.gzip
