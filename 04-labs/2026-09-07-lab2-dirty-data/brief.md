@@ -83,10 +83,12 @@ Answer these four questions before writing a single line of code:
 ### 2. Load naively, and read the error (5 min)
 
 ```r
+# R
 trade <- read.csv("data/raw/comtrade_fr_roundwood_dirty.csv")
 ```
 
 ```python
+# Python
 import pandas as pd
 trade = pd.read_csv("data/raw/comtrade_fr_roundwood_dirty.csv")
 ```
