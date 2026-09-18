@@ -14,6 +14,7 @@ reference sheets, and the model cartography pack.
 | If you are… | Go to |
 |---|---|
 | before the first session | [`00-admin/installation-guide.md`](00-admin/installation-guide.md) |
+| lost between Python, conda and VS Code | [`01-handbook/`](01-handbook/) |
 | stuck on an error | [`00-admin/how-to-ask-a-question.md`](00-admin/how-to-ask-a-question.md), then [open an issue](https://github.com/vlmathieu/firs-uc33-modeling/issues/new/choose) |
 | looking up a word | [`02-reference/glossary-en-fr.md`](02-reference/glossary-en-fr.md) |
 | translating R into Python | [`02-reference/r-python-julia-equivalents.md`](02-reference/r-python-julia-equivalents.md) |
