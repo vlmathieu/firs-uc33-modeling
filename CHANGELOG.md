@@ -6,6 +6,46 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 If you downloaded material before one of the dates below, check what has changed since
 — particularly the "Fixed" entries.
 
+## 2026-09-18
+
+### Added
+
+- `01-handbook/python/`, part 1 of the handbook: *Python and VS Code*. Nine chapters
+  written from issues #2 to #5: why Python, key concepts, installing Python (two
+  paths, python.org or Miniforge, with commands per operating system), interpreters in
+  VS Code, installing packages into the right interpreter, the five ways of running
+  code and what each assumes, script conventions, reading tracebacks and long logs, and
+  a one-page checklist with the five commands to paste in an issue. Each chapter ends
+  with complementary readings.
+- `01-handbook/_quarto.yml` and `index.qmd`: the handbook is a Quarto book.
+  `quarto render` from `01-handbook/` builds an HTML site and `handbook.pdf` into
+  `_book/`, which is not committed. The Markdown chapters are the source.
+- `02-reference/glossary-en-fr.md`, section *Python tooling*: interpreter, kernel,
+  package manager, distribution, channel, wheel, PATH, `site-packages`, traceback and
+  a dozen more, with their French equivalents.
+- `00-admin/installation-guide.md`, section (d): the Jupyter extension joins Python, R
+  and Quarto in the list to install. Notebooks and `# %%` cells need it.
+
+### Fixed
+
+- `00-admin/installation-guide.md`, section (c), rewritten. The emailed version told
+  Windows users to tick *Add python.exe to PATH*; that checkbox exists only in the
+  classic installer, and the default python.org download for Windows is now the Python
+  Install Manager, which has no such screen and sets the PATH itself (issue #2). The
+  section now gives the two supported paths, python.org and Miniforge, says what to do
+  when a Python is already installed, and links to the handbook for the rest.
+- `00-admin/installation-guide.md`, check section, and
+  `02-reference/terminal-cheatsheet.md`, PATH section: both blamed a missed checkbox
+  for `command not found`. They now point to the handbook's chapter 2 and mention `py`
+  on Windows.
+
+### Changed
+
+- `01-handbook/README.md` describes the layout actually adopted: one Markdown file per
+  chapter under `python/`, assembled by Quarto, rather than a single `handbook.qmd`.
+- `README.md`, *Where to start*: a row for the handbook.
+- `.gitignore`: `_book/`, Quarto's book output folder.
+
 ## 2026-09-06
 
 ### Fixed
