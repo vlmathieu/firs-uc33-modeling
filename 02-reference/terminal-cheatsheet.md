@@ -47,8 +47,10 @@ known list of folders**: the **PATH**.
 | `command not found` (macOS) | either the program is not installed, |
 | `is not recognized as an internal or external command` (Windows) | or it is, but it is not on the PATH |
 
-Knowing which of the two is already ninety per cent of the fix. On Windows the most
-common cause is the **"Add python.exe to PATH"** checkbox missed at installation.
+Knowing which of the two is already ninety per cent of the fix. For Python, the
+[handbook](../01-handbook/python/02-install.md) says how to find out which Pythons a
+machine has and which one the terminal is finding; on Windows, `py` often works where
+`python` does not.
 
 ## Checking your installation
 
