@@ -98,6 +98,34 @@ Terms in **bold** are the ones you must recognise by ear from 7 September.
 | raw data | données brutes |
 | processed data | données retraitées |
 
+## Python tooling
+
+The vocabulary of [handbook part 1](../01-handbook/README.md), chapter 1 in particular.
+
+| English | Français | In one line |
+|---|---|---|
+| **interpreter** | interpréteur | the program that executes Python; several can coexist on one machine |
+| **kernel** | noyau | an interpreter running behind a notebook, keeping its state |
+| module | module | one `.py` file you `import` |
+| standard library | bibliothèque standard | the modules that come with every Python |
+| third-party package | paquet tiers | anything you must install: pandas, matplotlib… |
+| **package manager** | gestionnaire de paquets | the tool that installs packages: pip, conda |
+| distribution | distribution | a way of packaging Python: python.org, Miniforge, Anaconda… |
+| channel | canal | where conda downloads from: conda-forge |
+| wheel | wheel (archive précompilée) | a pre-built package file, one per Python version and system |
+| **PATH** | PATH (variable d'environnement) | the list of folders the terminal searches for a command |
+| `site-packages` | dossier des paquets installés | the folder, inside one interpreter, where its packages live |
+| to activate (an environment) | activer | tell the terminal which interpreter `python` means |
+| console, REPL | console interactive | the `>>>` prompt where Python is typed one line at a time |
+| notebook | carnet, notebook | a `.ipynb` file of cells with their output |
+| cell | cellule | one block of code in a notebook or after `# %%` |
+| **traceback** | trace d'appels, traceback | the error report: calls from top to bottom, message last |
+| extension | extension | what teaches VS Code a language |
+| command palette | palette de commandes | `Ctrl+Shift+P`: every VS Code action by name |
+| status bar | barre d'état | the bottom strip of VS Code; the interpreter shows bottom right |
+| workspace | espace de travail | the folder opened in VS Code |
+| shortcut | raccourci clavier | |
+
 ## Four false friends
 
 | Trap | Why |
