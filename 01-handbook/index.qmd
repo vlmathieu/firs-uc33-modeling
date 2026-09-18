@@ -1,0 +1,17 @@
+# Preface {.unnumbered}
+
+This handbook collects what the course unit expects you to know about the tools, in a
+form meant to be consulted all year rather than read once. Each chapter stands alone;
+each ends with a short list of complementary readings.
+
+The first part covers Python and VS Code. It was written after the first fortnight of
+the course unit, from the questions raised in the repository's issues, and it is
+organised around the one idea behind most of them: a package is installed into one
+specific Python, and only that Python can use it.
+
+The source of every chapter is a Markdown file in the
+[`01-handbook/`](https://github.com/vlmathieu/firs-uc33-modeling/tree/main/01-handbook)
+folder of the repository. Corrections are recorded in the repository's
+[`CHANGELOG.md`](https://github.com/vlmathieu/firs-uc33-modeling/blob/main/CHANGELOG.md).
+Questions go to the
+[issues](https://github.com/vlmathieu/firs-uc33-modeling/issues/new/choose).

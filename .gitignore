@@ -23,7 +23,8 @@ venv/
 .ipynb_checkpoints/
 
 # Quarto
-/.quarto/
+.quarto/
+_book/
 *_files/
 *_cache/
 

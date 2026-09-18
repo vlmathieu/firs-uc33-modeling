@@ -1,0 +1,35 @@
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "UC 3.3 Modeling — Handbook"
+  subtitle: "Python and VS Code"
+  author: "FIRS, AgroParisTech"
+  date: today
+  date-format: "YYYY-MM-DD"
+  repo-url: https://github.com/vlmathieu/firs-uc33-modeling
+  output-file: handbook
+  chapters:
+    - index.qmd
+    - part: "Python and VS Code"
+      chapters:
+        - python/00-why-python.md
+        - python/01-key-concepts.md
+        - python/02-install.md
+        - python/03-interpreters-and-vscode.md
+        - python/04-install-packages.md
+        - python/05-run-code.md
+        - python/06-script-conventions.md
+        - python/07-read-errors.md
+        - python/08-checklist.md
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+  pdf:
+    documentclass: scrreprt
+    toc: true
+    number-sections: true
+    colorlinks: true
