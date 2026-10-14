@@ -31,3 +31,6 @@ _book/
 # System
 .DS_Store
 Thumbs.db
+
+# PDF articles
+06-cartography/references/
