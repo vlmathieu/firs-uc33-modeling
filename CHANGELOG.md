@@ -6,6 +6,51 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 If you downloaded material before one of the dates below, check what has changed since
 — particularly the "Fixed" entries.
 
+## 2026-10-14
+
+### Added
+
+- `06-cartography/guidance-note.md`: the guidance note for the assessed deliverable.
+  What is handed in and why it is three separate objects (one A3 page, a three-page
+  synthesis note, the filled grid as an annex), which models fall inside the scope with
+  ten as a floor, how the grid works and which six of its columns take a closed
+  vocabulary, what axes and classes each give you, how to work across the semester, the
+  five ways the exercise goes wrong, and the submission procedure. The deliverable is
+  written in English, sources are cited in APA format, the grid comes back
+  comma-separated and UTF-8 encoded, and neither the worked example nor the example row
+  of the grid counts towards the ten models.
+- `06-cartography/analysis-grid.csv`: the grid as a fillable template, 32 columns
+  grouped under the five blocks announced on 4 September (identity, frame, flows,
+  credibility, use), filled with the dimensions of Kelly et al. 2013 from the modelling
+  lecture, plus `typology_position` and `what_does_not_fit` for the comparative work.
+  Ships with the worked example of slide 12 already filled in, to set the expected level
+  of detail.
+- `06-cartography/assessment-criteria.md`: the criteria with their weights, making
+  explicit the three expectations announced on 4 September. Critical and comparative
+  analysis 40 %, coverage and structure 25 %, synthesis note 20 %, the A3 10 %,
+  traceability 5 %.
+- `06-cartography/typology-references.md`: annotated bibliography in three tiers, five
+  references to read, twelve typologies with what each one sorts, then the rest arranged
+  by column of the grid. Combines the references cited in the lecture of 4 September
+  with additions on the forest side (Pretzsch et al. 2008, Latta et al. 2013) and on
+  description and purpose (ODD 2006, TRACE, Schmolke et al. 2010, Levins 1966,
+  Epstein 2008, Wilson et al. 2017). Model papers and applications are deliberately
+  left out: the students build their own typology, and they meet enough models during
+  the year. Every DOI resolved against Crossref. Five of them are also available as
+  PDFs on the course Seafile share, linked from the file; they are not redistributed
+  through this repository.
+
+### Changed
+
+- `06-cartography/README.md`: the four available files are now linked, the three objects
+  handed in are named, and the line requiring a GitHub repository per pair is replaced by
+  the submission channel, which is email.
+- `README.md`, layout block: `06-cartography/` now lists the typologies alongside the
+  guidance note, the grid and the criteria.
+- `.gitignore`: `06-cartography/references/` is ignored. The article PDFs linked from the
+  bibliography stay out of the repository, since their licences do not allow
+  redistribution, and are shared through Seafile instead.
+
 ## 2026-09-18
 
 ### Added
