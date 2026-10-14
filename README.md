@@ -32,7 +32,7 @@ reference sheets, and the model cartography pack.
 03-lectures/     lecture material, one folder per session
 04-labs/         briefs, challenges and solutions
 05-data/         toy datasets, with their data dictionary
-06-cartography/  guidance note, analysis grid, assessment criteria
+06-cartography/  guidance note, analysis grid, assessment criteria, typologies
 07-links.md      external resources
 ```
 
